@@ -1,5 +1,5 @@
 <?php
-namespace Humanoid\Core\Utils;
+namespace Lisonsjeunesse\Core\Utils;
 
 class Text {
     public static function isolateWord(string $sentence, int $number = 1) {
@@ -33,5 +33,9 @@ class Text {
         }
 
         return "{}";
+    }
+
+    public static function getExcerpt(string $str = null) {
+        return substr(wp_strip_all_tags($str), 0, 120);
     }
 }

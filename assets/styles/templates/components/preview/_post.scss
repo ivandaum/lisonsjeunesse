@@ -1,0 +1,63 @@
+.PostPreview {
+    font-size: 1.6rem;
+
+    &__category {
+        margin-bottom: 2rem;
+
+        &::before,
+        &::after {
+            content: ' ';
+            display: block;
+            background: $black;
+            width: 3rem;
+            height: 0.1rem;
+            margin: 0 2rem;
+        }
+    }
+    &__image {
+        padding-top: 130%;
+        width: 100%;
+        background: $grey;
+        overflow: hidden;
+
+        img {
+            transition: transform $speed $bezier;
+            transform-origin: center center;
+            @include object-fit;
+        }
+    }
+
+    &__title {
+        font-size: 2.5rem;
+        line-height: 1.2em;
+        margin-top: 1.5rem;
+    }
+
+    &__date {
+        margin: 2rem 0;
+        font-size: 0.8em;
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__excerpt {
+        margin-bottom: 2rem;
+    }
+
+    svg {
+        height: 1.5rem;
+        margin-right: 0.8rem;
+        width: 1.5rem;
+    }
+
+    button,
+    a {
+        cursor: pointer;
+    }
+
+    &:hover .PostPreview__image img {
+        transform: scale(1.05);
+    }
+}

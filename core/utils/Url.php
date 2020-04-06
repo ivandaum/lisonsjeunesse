@@ -1,5 +1,5 @@
 <?php
-namespace Humanoid\Core\Utils;
+namespace Lisonsjeunesse\Core\Utils;
 
 class Url {
     public static function isEmail(string $url) {
@@ -18,5 +18,9 @@ class Url {
 
     public static function getCurrent() {
         return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    }
+
+    public static function isActive(string $url) {
+        return $url === self::getCurrent();
     }
 }

@@ -1,20 +1,3 @@
-.is-justified {
-    align-items: space-between;
-    justify-content: space-between;
-}
-
-.is-center {
-    align-items: center;
-    justify-content: center;
-}
-
-.is-baseline {
-    align-items: baseline;
-}
-
-.no-shrink {
-    flex-shrink: 0;
-}
 .is-inline {
     display: inline;
 }
@@ -67,8 +50,4 @@
     @include touch {
         display: none !important;
     }
-}
-
-.is-capitalize::first-letter {
-    text-transform: capitalize;
 }

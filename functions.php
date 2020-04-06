@@ -4,7 +4,7 @@
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/config/config.php');
 
-new Humanoid\Core\Ajax();
+new Lisonsjeunesse\Core\Ajax();
 
 add_theme_support( 'post-thumbnails' );
 
@@ -43,6 +43,12 @@ remove_action('wp_print_styles', 'print_emoji_styles');
 
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+
+add_action('wp_enqueue_scripts', function() {
+    wp_deregister_script('jquery');
+}); 
+
 
 add_action('get_header', 'remove_admin_login_header');
 function remove_admin_login_header() {

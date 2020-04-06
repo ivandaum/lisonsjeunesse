@@ -1,21 +1,25 @@
-<?php
-    $customColor = '';
-
-    if (isset($options['isBlue'])) {
-        $customColor .= ' has-color-humanoid-blue ';
-    }
+<?php 
+    use \Lisonsjeunesse\Core\Utils\Image; 
+    use \Lisonsjeunesse\Core\Utils\Svg; 
 ?>
 <div class="PostPreview">
-    <a href="<?= $post->link ?>" class="PostPreview__image has-radius-top-right is-relative is-block">
+    <a class="PostPreview__category is-flex is-center" href="<?= get_category_link($post->mainCategory) ?>">
+        <span class="no-shrink"><?= $post->mainCategory->name ?></span>
+    </a>
+
+    <a href="<?= $post->link ?>" class="PostPreview__image is-relative is-block">
         <?php if ($post->previewImage): ?>
-        <?= \Humanoid\Core\Utils\Image::create($post->previewImage); ?>
+            <?= Image::create($post->previewImage); ?>
         <?php endif; ?>
     </a>
-    <p class="PostPreview__date date is-size-6 <?= $customColor ?>"><?= $post->date ?></p>
-    <h3 class="PostPreview__title is-size-3 has-text-weight-bold <?= $customColor ?>"><?= $post->title ?></h3>
-    <?php if ($post->introduction): ?>
-    <p class="PostPreview__introduction is-size-5 <?= $customColor ?>"><?= $post->introduction ?></p>
-    <?php endif; ?>
 
-    <a href="<?= $post->link ?>" class="button button--orange is-lowercase is-size-6">Lire l'article</a>
+    <h3 class="PostPreview__title"><a href="<?= $post->link ?>"><?= $post->title ?></a></h3>
+
+    <p class="PostPreview__date is-flex is-justified">
+        <span class="no-shrink"><?= $post->date ?> par <a href="<?= $post->author->url ?>"><?= $post->author->name ?></a></span>
+        <span class="is-flex is-center no-shrink"><?= Svg::print('clock'); ?><?= $post->readTime ?> min</span>
+    </p>
+    <p class="PostPreview__excerpt"><?= $post->excerpt ?></p>
+
+    <button class="is-flex is-center"><?= Svg::print('like'); ?> Ajouter à ma bibliothèque</button>
 </div>

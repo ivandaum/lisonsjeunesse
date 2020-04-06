@@ -1,9 +1,7 @@
-/** Font references **/
-
-/** Colors **/
-$black: #000;
+$black: #312c38;
+$grey: #c1bfc3;
 $white: #fff;
-$beige: #F9ECDD;
+$greige: #f9ecdd;
 
 $bezier: cubic-bezier(0.59, 0.01, 0.4, 0.98);
 $speed: 250ms;
@@ -25,5 +23,16 @@ $fontweight: (
     bold: bold,
 );
 
-$font-path: '~assets/fonts/';
-$font-italic: 'Times New Roman', Times, serif;
+$breakpoints: (
+    widescreen: 1280px,
+    desktop: 1000px,
+    tablet: 768px,
+    phone: 767px,
+    phone-s: 500px,
+    phone-xs: 360px,
+);
+
+$font-path: '/assets/fonts/';
+
+$font-primary: Helvetica, Arial, sans-serif;
+$font-secondary: 'recoletaregular', sans-serif;

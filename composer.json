@@ -1,5 +1,5 @@
 {
-    "name": "Humanoid",
+    "name": "Lisonsjeunesse",
     "authors": [
         {
             "name": "Ivan Daum",
@@ -9,12 +9,11 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Humanoid\\": "core/",
-            "Humanoid\\Core\\": "core/",
-            "Humanoid\\Core\\Layouts\\": "core/layouts",
-            "Humanoid\\Core\\Models\\": "core/models",
-            "Humanoid\\Core\\Utils\\": "core/utils/"
+            "Lisonsjeunesse\\": "core/",
+            "Lisonsjeunesse\\Core\\": "core/",
+            "Lisonsjeunesse\\Core\\Layouts\\": "core/layouts",
+            "Lisonsjeunesse\\Core\\Models\\": "core/models",
+            "Lisonsjeunesse\\Core\\Utils\\": "core/utils/"
         }
     }
-    
 }

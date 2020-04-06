@@ -1,8 +1,8 @@
 <?php
 
-namespace Humanoid\Core;
+namespace Lisonsjeunesse\Core;
 
-use Humanoid\Core\Layouts\Newsletter;
+use Lisonsjeunesse\Core\Layouts\Newsletter;
 
 class Ajax {
     public static $passwordIsValid = false;

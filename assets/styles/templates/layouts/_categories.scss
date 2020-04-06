@@ -1,0 +1,15 @@
+.CategoriesList {
+    font-size: 1.6rem;
+    line-height: 1.2em;
+    padding: 6rem 2rem;
+
+    li {
+        text-align: center;
+    }
+
+    li.is-active {
+        text-decoration: underline;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+}

@@ -1,5 +1,5 @@
 <?php
-namespace Humanoid\Core\Utils;
+namespace Lisonsjeunesse\Core\Utils;
 
 class Template {
     public static function load(string $path, $variables = array()) {

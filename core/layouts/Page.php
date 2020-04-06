@@ -1,7 +1,7 @@
 <?php
-namespace Humanoid\Core\Layouts;
+namespace Lisonsjeunesse\Core\Layouts;
 
-use \Humanoid\Core\Models\Post;
+use \Lisonsjeunesse\Core\Models\Post;
 
 class Xp {
 

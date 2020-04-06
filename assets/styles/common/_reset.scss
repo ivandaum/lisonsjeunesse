@@ -397,4 +397,42 @@ svg {
     transform-origin: center center;
     height: 100%;
     width: 100%;
+    display: inline-flex;
+}
+
+picture {
+    display: block;
+}
+
+img {
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    &.loaded {
+        animation: fade-in 1s;
+    }
+}
+html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: none;
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: grayscale;
+    -o-font-smoothing: antialiased;
+    font-style: normal;
+    font-weight: normal;
+    overflow-y: scroll;
+    color: $black;
+    background: $white;
+    font-family: $font-primary;
+}
+
+main {
+    padding-top: 16rem;
 }

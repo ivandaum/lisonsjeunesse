@@ -1,0 +1,14 @@
+.is-capitalize::first-letter {
+    text-transform: capitalize;
+}
+
+.has-background-greige {
+    background: $greige;
+}
+
+.is-title {
+    font-size: 8rem;
+    line-height: 1.2em;
+    font-weight: map-get($fontweight, normal);
+    padding: 3.6rem 0;
+}

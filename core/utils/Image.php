@@ -1,6 +1,6 @@
 <?php
 
-namespace Humanoid\Core\Utils;
+namespace Lisonsjeunesse\Core\Utils;
 
 class Image {
     public static $mimeType;
@@ -27,12 +27,6 @@ class Image {
             '360' => 'phone-s',
             '1' => '1x1',
         );
-
-        // $sources['1599'] = array(
-        //     'src' => $image['url'],
-        //     'width' => $image['width'],
-        //     'height' => $image['height'],
-        // );
 
         foreach ($relations as $breakpoint => $imageName) {
             $sources[$breakpoint] = array(
@@ -65,7 +59,7 @@ class Image {
             'mime_type' => $metadata['image_meta']['title'],
             'title' => $metadata['image_meta']['title'],
             'sizes' => array(),
-            'url' => wp_get_original_image_url($id),
+            'url' => wp_get_attachment_url($id),
             'height' => $metadata['height'],
             'width' => $metadata['width'],
         );
@@ -98,7 +92,7 @@ class Image {
         }
 
         if (isset($last)) {
-            $html .= '<img src="'. $sources['360']['src'] .'" data-src="' . $last['src'] . '" alt="' . self::$title . '" />';
+            $html .= '<img src="'. $sources['1']['src'] .'" data-src="' . $last['src'] . '" alt="' . self::$title . '" />';
         }
         $html .= '</picture>';
         return $html;

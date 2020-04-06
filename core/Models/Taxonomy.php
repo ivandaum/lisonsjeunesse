@@ -1,9 +1,9 @@
 <?php
-namespace Humanoid\Core\Models;
-use \Humanoid\Constants\Taxonomy as TaxonomyConstant;
+namespace Lisonsjeunesse\Core\Models;
+use \Lisonsjeunesse\Constants\Taxonomy as TaxonomyConstant;
 
 class Taxonomy {
-    public static function find(string $taxonomy = TaxonomyConstant::projectType) {
+    public static function find(string $taxonomy) {
         return get_terms(array( 
             'taxonomy' => $taxonomy,
             'hide_empty' => false,
@@ -12,7 +12,7 @@ class Taxonomy {
         ));
     }
 
-    public static function findOne(string $slug, string $taxonomy = TaxonomyConstant::projectType) {
+    public static function findOne(string $slug, string $taxonomy) {
         return get_terms(array( 
             'taxonomy' => $taxonomy,
             'hide_empty' => false,
@@ -20,7 +20,7 @@ class Taxonomy {
         ));
     }
 
-    public static function findByPostId(int $postId, string $taxonomy = TaxonomyConstant::projectType) {
+    public static function findByPostId(int $postId, string $taxonomy) {
         return get_the_terms($postId, $taxonomy);
     }
 }

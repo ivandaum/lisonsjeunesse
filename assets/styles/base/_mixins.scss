@@ -1,34 +1,36 @@
 @mixin object-fit($value: cover) {
-  display: block;
-  height: 100%;
-  max-height: none;
-  max-width: none;
-  min-height: 0;
-  min-width: 0;
-  object-fit: $value;
-  width: 100%;
+    display: block;
+    height: 100%;
+    max-height: none;
+    max-width: none;
+    min-height: 0;
+    min-width: 0;
+    object-fit: $value;
+    width: 100%;
+    position: absolute;
+    top: 0;
 }
 
 @mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
-  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
-  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
-  $min-breakpoint: $min / $responsive-unitless * 100;
-  
-  @media (max-#{$dimension}: #{$min-breakpoint}) {
-    font-size: $min;
-  }
-  
-  @if $max {
-    $max-breakpoint: $max / $responsive-unitless * 100;
-    
-    @media (min-#{$dimension}: #{$max-breakpoint}) {
-      font-size: $max;
+    $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+    $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+    $min-breakpoint: $min / $responsive-unitless * 100;
+
+    @media (max-#{$dimension}: #{$min-breakpoint}) {
+        font-size: $min;
     }
-  }
-  
-  @if $fallback {
-    font-size: $fallback;
-  }
-  
-  font-size: $responsive;
+
+    @if $max {
+        $max-breakpoint: $max / $responsive-unitless * 100;
+
+        @media (min-#{$dimension}: #{$max-breakpoint}) {
+            font-size: $max;
+        }
+    }
+
+    @if $fallback {
+        font-size: $fallback;
+    }
+
+    font-size: $responsive;
 }

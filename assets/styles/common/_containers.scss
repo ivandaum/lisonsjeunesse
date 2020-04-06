@@ -2,7 +2,7 @@
     width: 100%;
     position: relative;
     z-index: map-get($zindex, section);
-    max-width: map-get($breakpoints, widescreen);
+    max-width: 108rem;
     margin: 0 auto;
     display: block;
 }
