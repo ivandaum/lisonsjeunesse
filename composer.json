@@ -1,0 +1,20 @@
+{
+    "name": "Humanoid",
+    "authors": [
+        {
+            "name": "Ivan Daum",
+            "email": "ivan.daum@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Humanoid\\": "core/",
+            "Humanoid\\Core\\": "core/",
+            "Humanoid\\Core\\Layouts\\": "core/layouts",
+            "Humanoid\\Core\\Models\\": "core/models",
+            "Humanoid\\Core\\Utils\\": "core/utils/"
+        }
+    }
+    
+}

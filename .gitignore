@@ -1,0 +1,24 @@
+
+# Created by https://www.gitignore.io/api/sass,wordpress
+# Edit at https://www.gitignore.io/?templates=sass,wordpress
+
+### Sass ###
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# ignore node dependency directories
+node_modules/
+dist/
+vendor/
+
+# ignore log files and databases
+*.DS_Store
+*.log
+*.sql
+*.sqlite
+*.error
+
+
+# End of https://www.gitignore.io/api/sass,wordpress
