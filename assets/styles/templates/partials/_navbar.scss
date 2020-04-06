@@ -19,12 +19,15 @@
         padding: 0 2.2rem;
         height: 100%;
         width: 100%;
+
+        border: 0.1rem solid transparent;
     }
 
     &__links > li:hover {
         background: $white;
         > a {
-            border-bottom: 0.1rem solid $grey;
+            border: 0.1rem solid $greige;
+            border-bottom: 0.1rem solid transparent;
         }
 
         .Navbar__sublinks {
@@ -39,6 +42,7 @@
         background: $white;
         right: 0;
         width: 120%;
+        border: 0.1rem solid $greige;
 
         li {
             height: 4rem;

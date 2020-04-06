@@ -2,6 +2,7 @@
 namespace Lisonsjeunesse\Core\Layouts;
 
 use \Lisonsjeunesse\Core\Models\Post;
+use Lisonsjeunesse\Core\Models\Taxonomy;
 
 class Category {
     public function __construct() {
@@ -13,10 +14,10 @@ class Category {
         $this->parent = null;
 
         if ($this->hasParent) {
-            $this->parent = get_category($cat->parent);
-            $this->subCategories = get_categories(array('parent' => $cat->parent));
+            $this->parent = Taxonomy::getById($cat->parent);
+            $this->subCategories = Taxonomy::getByParent($cat->parent);
         } else {
-            $this->subCategories = get_categories(array('parent' => $this->id));
+            $this->subCategories =  Taxonomy::getByParent($this->id);
         }
 
         $this->isMainCategory = $this->isMainCategory();
