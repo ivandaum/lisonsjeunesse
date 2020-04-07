@@ -11,7 +11,7 @@
 ?>
     <article class="Single" data-router-view="single">
         <div class="container is-flex is-justified">
-            <div class="is-column is-3 no-shrink">
+            <div class="Single__left is-column is-3 no-shrink">
                 <?php if ($single->previewImage): ?>
                     <div class="Single__image is-relative is-block has-width-100 is-sticky">
                         <?= Image::create($single->previewImage); ?>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="Single__comments">
-                    <h2 class="Single__comments--title is-flex is-center-y is-uppercase">Avis de lecteurs</h2>
+                    <h2 class="Single__comments--title is-secondary-title is-flex is-center-y">Avis de lecteurs</h2>
                     <ul>
                         <?php foreach($single->comments as $comment): ?>
                         <li class="Single__comment" id="comment-<?= $comment->comment_ID ?>">

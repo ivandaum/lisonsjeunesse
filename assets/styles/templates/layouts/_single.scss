@@ -14,8 +14,16 @@
         cursor: pointer;
     }
 
-    &__right a:hover {
-        text-decoration: underline;
+    &__left {
+        position: relative;
+        z-index: map-get($zindex, section);
+    }
+
+    &__right {
+        z-index: map-get($zindex, under-section);
+        a:hover {
+            text-decoration: underline;
+        }
     }
 
     &__image {
@@ -78,9 +86,8 @@
     }
 
     &__comments--title {
-        margin-top: 4rem;
+        margin-top: 8rem;
         margin-bottom: 1rem;
-        font-weight: map-get($fontweight, normal);
         &::before {
             content: ' ';
             display: block;

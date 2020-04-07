@@ -117,14 +117,41 @@
     }
 
     blockquote {
-        background: $white;
-        margin: 0;
+        // background: $white;
+        margin: 5rem 0;
         padding: 25rem 2rem;
+        position: relative;
+
+        &::before {
+            content: '“';
+            font-size: 60rem;
+            line-height: 0.75em;
+            font-weight: map-get($fontweight, normal);
+            color: $greige;
+            position: absolute;
+            z-index: map-get($zindex, section);
+            left: -10rem;
+            top: 15rem;
+        }
+
+        &::after {
+            height: 100%;
+            background: $white;
+            left: -100vw;
+            right: -100vw;
+            position: absolute;
+            top: 0;
+            content: ' ';
+            z-index: map-get($zindex, under-section);
+        }
 
         p {
+            text-align: left !important;
             font-size: 2.5rem;
-            line-height: 1.4em;
+            line-height: 1.6em;
             margin-bottom: 0;
+            position: relative;
+            z-index: map-get($zindex, above-section);
         }
     }
 }
