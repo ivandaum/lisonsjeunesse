@@ -12,6 +12,7 @@ class Template {
             echo "<!-- can't locate " . $path . " -->";
         }
     }
+
     public static function partial(string $slug, $variables = array()) {
         self::load(TEMPLATE_PATH . 'partials/'. $slug . '.php', $variables);
     }
@@ -22,5 +23,13 @@ class Template {
 
     public static function component(string $slug, $variables = array()) {
         self::load(TEMPLATE_PATH . 'components/'. $slug . '.php', $variables);
+    }
+
+    public static function file(string $slug, $variables = array()) {
+        self::load(THEME_PATH . $slug . '.php', $variables);
+    }
+
+    public static function exists(string $slug, $variables = array()) {
+        return file_exists(THEME_PATH . $slug . '.php');
     }
 }

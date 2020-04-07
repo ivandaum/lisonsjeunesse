@@ -421,7 +421,7 @@ html {
 
 body {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.6rem;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: grayscale;
     -o-font-smoothing: antialiased;
@@ -431,8 +431,4 @@ body {
     color: $black;
     background: $white;
     font-family: $font-primary;
-}
-
-main {
-    padding-top: 16rem;
 }

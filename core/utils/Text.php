@@ -2,21 +2,6 @@
 namespace Lisonsjeunesse\Core\Utils;
 
 class Text {
-    public static function isolateWord(string $sentence, int $number = 1) {
-        $s = explode(' ', $sentence);
-        $b = '';
-        $a = '';
-
-        foreach($s as $i => $w) {
-            if($i < $number) {
-                $b .= $w . ' ';
-            } else {
-                $a .= $w . ' ';
-            }
-        }
-        return '<span>' . $b . '</span>' . $a;
-    }
-
     public static function cleanWpEditor(string $html) {
         $html = preg_replace('/class=".*?"/', '', $html);
         return $html;

@@ -46,6 +46,7 @@
         display: none !important;
     }
 }
+
 .is-hidden-touch {
     @include touch {
         display: none !important;

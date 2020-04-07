@@ -1,4 +1,8 @@
 @import './templates/partials/navbar';
+@import './templates/partials/footer';
+
 @import './templates/layouts/posts';
-@import './templates/layouts/categories';
+@import './templates/layouts/filters';
+@import './templates/layouts/category';
+
 @import './templates/components/preview/post';

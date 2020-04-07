@@ -1,11 +1,16 @@
 .PostPreview {
     font-size: 1.6rem;
 
+    &__link:hover .PostPreview__image img {
+        transform: scale(1.05);
+    }
+
     &__category {
         margin-bottom: 2rem;
+        height: 1em;
 
-        &::before,
-        &::after {
+        a::before,
+        a::after {
             content: ' ';
             display: block;
             background: $black;
@@ -55,9 +60,5 @@
     button,
     a {
         cursor: pointer;
-    }
-
-    &:hover .PostPreview__image img {
-        transform: scale(1.05);
     }
 }

@@ -21,6 +21,12 @@ class Url {
     }
 
     public static function isActive(string $url) {
-        return $url === self::getCurrent();
+        $current = self::getCurrent();
+
+        if (get_query_var('paged')) {
+            $current = preg_replace('/\/page\/[0-9]/', '', $current);
+        }
+
+        return $url === $current;
     }
 }

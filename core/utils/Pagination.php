@@ -1,40 +1,31 @@
 <?php
 namespace Lisonsjeunesse\Core\Utils;
 
+use Lisonsjeunesse\Core\Utils\Url;
+
 class Pagination {
-    public $page;
-    public $pageNumber = 3;
+    public static function getUrl() {
+        return preg_replace('/\/page\/[0-9]/', '', Url::getCurrent());
+    }
 
-    public function __construct($count, $max, $paged) {
-        $this->paged = $paged;
-        $this->maxPage = $max / $count;
-        $this->count = $count;
-        $this->pages = array();
-        $this->baseUrl = preg_replace('/\/page\/[0-9]/', '', $_SERVER['REQUEST_URI']);
-
-        if ($this->paged === 0) {
-            $this->paged = 1;
+    public static function getCurrentPage() {
+        $paged = (int) get_query_var('paged');
+        if ($paged === 0) {
+            $paged = 1;
         }
 
-        if ($this->maxPage === 1) {
-            return false;
+        return $paged;
+    }
+
+    public static function getNextPage() {
+        return self::getUrl() . '/page/' . (self::getCurrentPage() + 1);
+    }
+
+    public static function getPrevPage() {
+        if (self::getCurrentPage() <= 2) {
+            return self::getUrl();
         }
 
-        $from = $this->paged - $this->pageNumber;
-        $to = $this->paged + $this->pageNumber;
-
-        for ($i = $from; $i < $this->paged; $i++) {
-            if ($i > 0) {
-                $this->pages[] = $i;
-            }
-        }
-
-        $this->pages[] = $this->paged;
-
-        for ($i = $this->paged+1; $i < $to; $i++) {
-            if ($i < $this->maxPage+1) {
-                $this->pages[] = $i;
-            }
-        }
+        return self::getUrl() . '/page/' . (self::getCurrentPage() - 1);
     }
 }

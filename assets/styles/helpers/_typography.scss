@@ -1,14 +1,36 @@
 .is-capitalize::first-letter {
-    text-transform: capitalize;
+    text-transform: capitalize !important;
 }
 
-.has-background-greige {
-    background: $greige;
+.is-lowercase {
+    text-transform: lowercase;
+}
+
+.has-background-white {
+    background: $white;
+}
+
+.has-text-bold {
+    font-weight: map-get($fontweight, bold);
 }
 
 .is-title {
     font-size: 8rem;
     line-height: 1.2em;
     font-weight: map-get($fontweight, normal);
-    padding: 3.6rem 0;
+    padding: 6rem 0 6rem 0;
+}
+
+.button {
+    border: 0.1rem solid $black;
+    font-size: 1.6rem;
+    line-height: 1em;
+    width: 22rem;
+    height: 6rem;
+    margin: 3rem 0 6rem 0;
+
+    &:hover {
+        background: $black;
+        color: $white;
+    }
 }

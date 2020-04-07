@@ -1,0 +1,33 @@
+.Filters {
+    font-size: 1.6rem;
+    line-height: 1.2em;
+    padding: 0 2rem;
+
+    li {
+        text-align: center;
+        margin: 0 2rem;
+        height: 9.2rem;
+    }
+
+    li.is-active {
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+
+    a {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.Filters.is-activable {
+    li {
+        width: 9.2rem;
+        padding: 0 1rem;
+    }
+
+    li.is-active {
+        background: $white;
+        border-radius: 50%;
+    }
+}

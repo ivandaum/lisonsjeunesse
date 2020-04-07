@@ -4,6 +4,6 @@
 
     $category = new Category();
     get_header(); 
-    Template::layout('category/age', array('category' => $category)); 
+    Template::layout('category/genre', array('category' => $category));
 
     get_footer();

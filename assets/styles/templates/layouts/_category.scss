@@ -1,0 +1,17 @@
+.Category {
+    padding-top: 16rem;
+    min-height: 75vh;
+    background: $greige;
+
+    h1 {
+        text-align: center;
+    }
+
+    &.is-main-category .is-title {
+        padding: 0 0 5rem 0;
+    }
+
+    &__header .Filters {
+        margin-bottom: 5rem;
+    }
+}

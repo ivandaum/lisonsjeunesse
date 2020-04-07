@@ -2,6 +2,8 @@
 namespace Lisonsjeunesse\Core\Models;
 
 use \Lisonsjeunesse\Core\Utils\Text;
+use \Lisonsjeunesse\Core\Models\Taxonomy;
+use \Lisonsjeunesse\Constants\TaxonomyConstants;
 
 class Post {
     public static function find(int $count = 6, int $paged = 0) {
@@ -15,15 +17,6 @@ class Post {
         ));
 
         return self::format($query->posts);
-    }
-    public static function count() {
-        $query = new \WP_Query(array(
-            'posts_per_page' => 1,
-            'status' => 'publish',
-            'fields' => 'ids',
-        ));
-
-        return $query->found_posts;
     }
 
     public static function findByCategory(int $catId = null, int $count = 6, int $paged = 0) {
@@ -74,10 +67,10 @@ class Post {
             $temp->link = get_permalink($id);
             $temp->date = get_the_date('d/m/Y', $id);
             $temp->previewImage = (int) get_post_thumbnail_id($id);
-            $temp->categories = get_the_category($id);
-            $temp->mainCategory = $temp->categories[0];
+            $temp->categories = Taxonomy::findByPostId($id);
+            $temp->mainCategory = self::getMainCategory($temp->categories);
 
-            $temp->readTime = rand(3, 10);
+            $temp->readTime = round(count(explode(' ', strip_tags($temp->content))) / 200);
             $author = new \stdClass();
             $author->url = get_author_posts_url($p->post_author);
             $author->name = get_userdata($p->post_author)->display_name;
@@ -88,5 +81,15 @@ class Post {
         }
 
         return $arr;
+    }
+
+    public static function getMainCategory(array $categories) {
+        foreach($categories as $category) {
+            if ($category->hasParent && $category->parent->slug !== TaxonomyConstants::age) {
+                return $category;
+            }
+        }
+
+        return null;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 namespace Lisonsjeunesse\Core\Utils;
-
+use \Lisonsjeunesse\Core\Models\Taxonomy;
 use \Lisonsjeunesse\Core\Utils\Url;
 
 class Menu {
@@ -22,7 +22,7 @@ class Menu {
         foreach($objects as $object) {
             $item = new \stdClass();
             $item->title = $object->title;
-            $item->url = $object->url;
+            $item->url = str_replace('category/', '', $object->url);
             $item->id = (int) $object->object_id;
             $item->isExternal = Url::isExternal($object->url);
             $item->uniqueId = $object->object_id . '-' . rand(0, time());

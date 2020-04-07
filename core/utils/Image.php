@@ -56,13 +56,26 @@ class Image {
         $metadata = wp_get_attachment_metadata($id);
 
         $image = array(
-            'mime_type' => $metadata['image_meta']['title'],
-            'title' => $metadata['image_meta']['title'],
             'sizes' => array(),
             'url' => wp_get_attachment_url($id),
-            'height' => $metadata['height'],
-            'width' => $metadata['width'],
+            'mime_type' => 'jpg',
+            'title' => '',
+            'height' => '',
+            'width' => ''
         );
+
+        if (isset($metadata['image_meta'])) {
+            $image['mime_type'] = $metadata['image_meta']['title'];
+            $image['title'] =  $metadata['image_meta']['title'];
+        }
+
+        if (isset($metadata['height'])) {
+            $image['height'] = $metadata['height'];
+        }
+
+        if (isset($metadata['width'])) {
+            $image['width'] = $metadata['width'];
+        }
 
         $sizes = get_intermediate_image_sizes();
         for ($i = 0; $i < count($sizes); $i += 1) {
