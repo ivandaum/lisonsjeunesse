@@ -6,6 +6,10 @@
     text-transform: lowercase;
 }
 
+.is-uppercase {
+    text-transform: uppercase;
+}
+
 .has-background-white {
     background: $white;
 }
@@ -19,6 +23,23 @@
     line-height: 1.2em;
     font-weight: map-get($fontweight, normal);
     padding: 6rem 0 6rem 0;
+    z-index: map-get($zindex, section);
+}
+
+.is-secondary-title {
+    font-size: 4rem;
+    line-height: 1.2em;
+    font-weight: map-get($fontweight, normal);
+    z-index: map-get($zindex, section);
+}
+
+.is-first-letter {
+    font-size: 30rem;
+    line-height: 0.75em;
+    font-weight: map-get($fontweight, normal);
+    color: $white;
+    z-index: map-get($zindex, under-section);
+    left: -10rem;
 }
 
 .button {
@@ -28,9 +49,82 @@
     width: 22rem;
     height: 6rem;
     margin: 3rem 0 6rem 0;
+    background: transparent;
 
     &:hover {
         background: $black;
         color: $white;
+    }
+}
+
+.wp-content {
+    p {
+        font-size: 1.6rem;
+        line-height: 1.5625em;
+        margin-bottom: 1em;
+    }
+
+    p.first-of-content {
+        font-size: 3rem;
+        line-height: 1.5em;
+        margin-bottom: 5rem;
+
+        em {
+            font-style: normal;
+        }
+    }
+
+    figure {
+        margin: 5rem 0;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: map-get($fontweight, normal);
+        margin: 1.125em 0;
+    }
+
+    h2 {
+        font-size: 4rem;
+    }
+
+    h3 {
+        font-size: 3.5rem;
+    }
+
+    h4 {
+        font-size: 3rem;
+    }
+
+    h5 {
+        font-size: 2.5rem;
+    }
+
+    h6 {
+        font-size: 2rem;
+    }
+
+    ul li {
+        margin-bottom: 1rem;
+
+        &::before {
+            content: '-';
+            margin-right: 0.5rem;
+        }
+    }
+
+    blockquote {
+        background: $white;
+        margin: 0;
+        padding: 25rem 2rem;
+
+        p {
+            font-size: 2.5rem;
+            line-height: 1.4em;
+            margin-bottom: 0;
+        }
     }
 }

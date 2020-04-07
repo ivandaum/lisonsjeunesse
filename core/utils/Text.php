@@ -20,7 +20,22 @@ class Text {
         return "{}";
     }
 
-    public static function getExcerpt(string $str = null) {
-        return substr(wp_strip_all_tags($str), 0, 120);
+    public static function getExcerpt(string $string = null) {
+        return substr(wp_strip_all_tags($string), 0, 120);
+    }
+
+    public static function getFirstLetter(string $string = null) {
+        $string = str_replace(array('«', '"'), '', $string);
+        $string = preg_replace('/\s+/', '', $string);
+        return substr(wp_strip_all_tags($string), 0, 1);
+    }
+
+    public static function formatWpContent(string $string = null) {
+        $string = preg_replace('/<p/', '<p class="first-of-content"', $string, 1);
+
+        // $replaceBy = '<blockquote ${1}>${2}</blockquote>';
+        // $string = preg_replace('/<blockquote(*.?)>(*.?)<\/blockquote>/', $replaceBy, $string);
+
+        return $string;
     }
 }

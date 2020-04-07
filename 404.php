@@ -1,7 +1,7 @@
 <?php
     get_header(); 
 ?>
-    <article class="Category" data-router-view="category">
+    <article class="Category" data-router-view="page">
         <div class="container">
             <h1 class="is-title is-center is-flex">Page non trouvée.</h1>
             <p class="is-center is-flex">La page que vous recherchez n'existe pas, ou a été déplacée.</p>

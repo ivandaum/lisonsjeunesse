@@ -17,6 +17,9 @@ import DefaultTransition from './transitions/DefaultTransition'
 const core = new Highway.Core({
     renderers: {
         category: DefaultRenderer,
+        single: DefaultRenderer,
+        page: DefaultRenderer,
+        search: DefaultRenderer,
     },
     transitions: {
         default: DefaultTransition,

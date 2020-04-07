@@ -1,0 +1,121 @@
+.Single {
+    padding-top: 16rem;
+    min-height: 75vh;
+    background: $greige;
+
+    svg {
+        height: 1.5rem;
+        margin-right: 0.8rem;
+        width: 1.5rem;
+    }
+
+    button,
+    a {
+        cursor: pointer;
+    }
+
+    &__right a:hover {
+        text-decoration: underline;
+    }
+
+    &__image {
+        top: 5rem;
+        margin-bottom: 8rem;
+    }
+
+    &__title {
+        font-size: 6rem;
+        line-height: 1.2em;
+        font-weight: map-get($fontweight, normal);
+        z-index: map-get($zindex, section);
+    }
+
+    &__content {
+        margin-top: 5rem;
+        z-index: map-get($zindex, section);
+    }
+
+    &__comments--form {
+        #reply-title,
+        .comment-form-url {
+            display: none;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        p {
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        textarea,
+        input[type='text'] {
+            width: 100%;
+            border: 0.1rem solid rgba($black, 0.2);
+            background: transparent;
+            padding: 2rem;
+        }
+
+        .comment-form-author,
+        .comment-form-email {
+            width: 45%;
+        }
+
+        label {
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        input[type='submit'] {
+            @extend .button;
+            float: right;
+            cursor: pointer;
+        }
+    }
+
+    &__comments--title {
+        margin-top: 4rem;
+        margin-bottom: 1rem;
+        font-weight: map-get($fontweight, normal);
+        &::before {
+            content: ' ';
+            display: block;
+            background: $black;
+            width: 3rem;
+            height: 0.1rem;
+            margin-right: 1rem;
+        }
+    }
+
+    &__comment {
+        border-bottom: 0.1rem solid rgba($black, 0.2);
+        padding: 3rem 0;
+    }
+
+    &__footer {
+        border-top: 0.1rem solid $black;
+        margin-top: 6rem;
+        padding-top: 3rem;
+    }
+
+    &__relatedPosts h2 {
+        padding: 8rem 0 5rem 0;
+
+        &::before {
+            content: ' ';
+            display: block;
+            background: $black;
+            width: 5rem;
+            height: 0.1rem;
+            margin-right: 4rem;
+        }
+    }
+
+    .LastPosts .is-column {
+        margin-bottom: 10rem;
+    }
+}

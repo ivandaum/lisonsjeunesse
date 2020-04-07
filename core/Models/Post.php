@@ -19,6 +19,18 @@ class Post {
         return self::format($query->posts);
     }
 
+    public static function findRelatedPost(int $id, int $count = 3) {
+        $query = new \WP_Query(array(
+            'posts_per_page' => $count,
+            'status' => 'publish',
+            'fields' => 'ids',
+            'post__not_in' => array($id),
+            'orderby' => 'rand',
+        ));
+
+        return self::format($query->posts);
+    }
+
     public static function findByCategory(int $catId = null, int $count = 6, int $paged = 0) {
 
         $query = new \WP_Query(array(
@@ -63,6 +75,7 @@ class Post {
             $temp->id = $id;
             $temp->title = $p->post_title;
             $temp->content = apply_filters('the_content', $p->post_content);
+            $temp->content = Text::formatWpContent($temp->content);
             $temp->excerpt = Text::getExcerpt($temp->content);
             $temp->link = get_permalink($id);
             $temp->date = get_the_date('d/m/Y', $id);
