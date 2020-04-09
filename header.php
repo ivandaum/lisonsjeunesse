@@ -9,6 +9,6 @@
         var ajaxUrl = "<?= admin_url( 'admin-ajax.php' ) ?>";
     </script>
 </head>
-<body>
+<body <?php body_class() ?>>
 <?php \Lisonsjeunesse\Core\Utils\Template::partial('navbar'); ?>
 <main data-router-wrapper>

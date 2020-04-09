@@ -11,7 +11,7 @@
 ?>
     <article class="Single" data-router-view="single">
         <div class="container is-flex is-justified">
-            <div class="Single__left is-column is-3 no-shrink">
+            <div class="Single__left is-column is-3 no-shrink is-relative ">
                 <?php if ($single->previewImage): ?>
                     <div class="Single__image is-relative is-block has-width-100 is-sticky">
                         <?= Image::create($single->previewImage); ?>
@@ -21,13 +21,17 @@
 
             <div class="Single__right is-column is-7 no-shrink is-relative">
                 <p class="is-first-letter is-absolute"><?= Text::getFirstLetter($single->title) ?></p>
-                <h1 class="Single__title is-margin-top-5 is-relative"><?= $single->title ?></h1>
-                <div class="Single__content is-relative wp-content">
+                <p class="Single__date is-relative is-flex is-uppercase">
+                    <span class="is-margin-right-3 is-flex is-center-y"><a href="<?= $single->author->url ?>"><?= $single->author->name ?></a></span>
+                    <span class="is-flex is-center no-shrink"><?= Svg::print('clock'); ?><?= $single->readTime ?> min</span>
+                </p>
+                <h1 class="Single__title is-margin-top-2 is-relative"><?= $single->title ?></h1>
+                <div class="Single__content is-margin-top-5 is-relative wp-content">
                     <?= $single->content ?>
                 </div>
                 
                 <div class="Single__footer is-flex is-justified">
-                    <button class="is-flex is-center"><?= Svg::print('like'); ?> Ajouter à ma bibliothèque</button>
+                    <?php Template::component('button/add-librairy', array('id' => $single->id)); ?>
                     <span class="no-shrink"><?= $single->date ?> par <a href="<?= $single->author->url ?>"><?= $single->author->name ?></a></span>
                 </div>
 

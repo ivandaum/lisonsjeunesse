@@ -40,21 +40,7 @@
     color: $white;
     z-index: map-get($zindex, under-section);
     left: -10rem;
-}
-
-.button {
-    border: 0.1rem solid $black;
-    font-size: 1.6rem;
-    line-height: 1em;
-    width: 22rem;
-    height: 6rem;
-    margin: 3rem 0 6rem 0;
-    background: transparent;
-
-    &:hover {
-        background: $black;
-        color: $white;
-    }
+    transform: translateY(-5rem);
 }
 
 .wp-content {
@@ -62,16 +48,25 @@
         font-size: 1.6rem;
         line-height: 1.5625em;
         margin-bottom: 1em;
+
+        &.has-small-font-size {
+            font-size: 1.4rem;
+            line-height: 1.3em;
+        }
+
+        &.first-of-content {
+            font-size: 3rem;
+            line-height: 1.5em;
+            margin-bottom: 5rem;
+
+            em {
+                font-style: normal;
+            }
+        }
     }
 
-    p.first-of-content {
-        font-size: 3rem;
-        line-height: 1.5em;
-        margin-bottom: 5rem;
-
-        em {
-            font-style: normal;
-        }
+    a {
+        text-decoration: underline;
     }
 
     figure {
@@ -117,7 +112,6 @@
     }
 
     blockquote {
-        // background: $white;
         margin: 5rem 0;
         padding: 25rem 2rem;
         position: relative;

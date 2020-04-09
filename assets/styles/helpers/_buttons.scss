@@ -1,0 +1,31 @@
+.button {
+    border: 0.1rem solid $black;
+    font-size: 1.6rem;
+    line-height: 1em;
+    width: 22rem;
+    height: 6rem;
+    margin: 3rem 0 6rem 0;
+    background: transparent;
+
+    &:hover {
+        background: $black;
+        color: $white;
+    }
+}
+
+.button-librairy {
+    cursor: pointer;
+
+    &--remove {
+        display: none;
+    }
+
+    &.is-active {
+        .button-librairy--add {
+            display: none;
+        }
+        .button-librairy--remove {
+            display: block;
+        }
+    }
+}

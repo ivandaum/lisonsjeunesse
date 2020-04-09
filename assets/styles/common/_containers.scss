@@ -2,7 +2,12 @@
     width: 100%;
     position: relative;
     z-index: map-get($zindex, section);
-    max-width: 108rem;
+    max-width: map-get($breakpoints, desktop);
     margin: 0 auto;
     display: block;
+
+    // from 1000px to 768px
+    @include touch {
+        padding: 0 $mobile-padding;
+    }
 }

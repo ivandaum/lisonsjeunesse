@@ -1,5 +1,6 @@
 <?php 
     use \Lisonsjeunesse\Core\Utils\Image; 
+    use \Lisonsjeunesse\Core\Utils\Template; 
     use \Lisonsjeunesse\Core\Utils\Svg; 
 ?>
 <div class="PostPreview">
@@ -26,5 +27,5 @@
     </p>
     <p class="PostPreview__excerpt"><?= $post->excerpt ?></p>
 
-    <button class="is-flex is-center"><?= Svg::print('like'); ?> Ajouter à ma bibliothèque</button>
+    <?php Template::component('button/add-librairy', array('id' => $post->id)); ?>
 </div>

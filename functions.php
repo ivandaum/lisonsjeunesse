@@ -37,6 +37,19 @@ function debug($var) {
     die;
 }
 
+
+function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
+    $sort_col = array();
+    foreach ($arr as $key=> $row) {
+        $sort_col[$key] = $row[$col];
+    }
+
+    array_multisort($sort_col, $dir, $arr);
+}
+
+
+// array_sort_by_column($array, 'order');
+
 // REMOVE WP EMOJI
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');

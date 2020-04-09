@@ -4,6 +4,7 @@ import Highway from '@dogstudio/highway'
 
 // import store from './utils/store';
 import DefaultRenderer from './renderer/DefaultRenderer'
+import HomeRenderer from './renderer/HomeRenderer'
 import DefaultTransition from './transitions/DefaultTransition'
 // import NavbarBehavior from './transitions/NavbarBehavior';
 
@@ -20,8 +21,10 @@ const core = new Highway.Core({
         single: DefaultRenderer,
         page: DefaultRenderer,
         search: DefaultRenderer,
+        home: HomeRenderer,
     },
     transitions: {
+        home: DefaultTransition,
         default: DefaultTransition,
     },
 })
@@ -39,7 +42,9 @@ core.on('NAVIGATE_OUT', () => {
 //   core.detach(document.querySelectorAll('a[href^="mailto"'));
 // });
 
-// core.on('NAVIGATE_IN', ({ location }) => {})
+core.on('NAVIGATE_IN', ({ to }) => {
+    document.body.classList = to.page.body.classList
+})
 
 core.on('NAVIGATE_ERROR', ({ location }) => {
     window.location.href = location.href

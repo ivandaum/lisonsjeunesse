@@ -2,13 +2,14 @@
     width: 100%;
     font-size: 1.4rem;
     line-height: 1.4em;
-    height: 6.2rem;
-    top: 5rem;
+    height: 6rem;
     z-index: map-get($zindex, header);
     max-width: map-get($breakpoints, widescreen);
     margin: 0 auto;
+    margin-top: 5rem;
     left: 0;
     right: 0;
+    padding: 0 $mobile-padding;
 
     &__logo {
         font-size: 3rem;

@@ -89,12 +89,24 @@ class Image {
         return $image;
     }
 
+    public static function getColor($image) {
+        if (is_int($image)) {
+            $image = self::createFromId($image);
+
+            if (!$image) {
+                return "";
+            }
+        }
+
+        return $image['sizes']['1x1'];
+    }
+
     public static function generateSrcset($sources = array()) {
 
-        $last = array_values(array_slice($sources, -1))[0];
+        $last = array_values(array_slice($sources, 1))[0];
 
         $html = '';
-        $html .= '<picture class="picture">';
+        $html .= '<picture style="padding-top: ' . ($last['height'] / $last['width'] * 100). '%; background-image: url(' . $sources['1']['src'] . ')">';
 
         foreach($sources as $size => $image) {
             if ($size == '1') continue;

@@ -1,39 +1,39 @@
-import { isFunction } from '../functions';
+import { isFunction } from '../functions'
 
 const RafManager = {
-  callbacks: [],
-  raf: [],
+    callbacks: [],
+    raf: [],
 
-  addQueue(func) {
-    this.callbacks.push(func);
-    return this.callbacks.length - 1;
-  },
+    addQueue(func) {
+        this.callbacks.push(func)
+        return this.callbacks.length - 1
+    },
 
-  removeQueue(index) {
-    if (this.callbacks[index]) {
-      this.callbacks.splice(index, 1);
-      return true;
-    }
+    removeQueue(index) {
+        if (this.callbacks[index]) {
+            this.callbacks.splice(index, 1)
+            return true
+        }
 
-    return false;
-  },
+        return false
+    },
 
-  render(delta) {
-    this.raf = window.requestAnimationFrame(this.render.bind(this));
+    render(delta) {
+        this.raf = window.requestAnimationFrame(this.render.bind(this))
 
-    this.callbacks.map((callback) => {
-      if (isFunction(callback)) {
-        callback(delta);
-      }
-      return true;
-    });
-  },
+        this.callbacks.map((callback) => {
+            if (isFunction(callback)) {
+                callback(delta)
+            }
+            return true
+        })
+    },
 
-  stop() {
-    window.cancelAnimationFrame(this.raf);
-    this.raf = null;
-  },
-};
+    stop() {
+        window.cancelAnimationFrame(this.raf)
+        this.raf = null
+    },
+}
 
-RafManager.render(0);
-export default RafManager;
+RafManager.render(0)
+export default RafManager

@@ -25,10 +25,10 @@
         background: $grey;
         overflow: hidden;
 
-        img {
-            transition: transform $speed $bezier;
-            transform-origin: center center;
-            @include object-fit;
+        picture {
+            position: absolute;
+            top: 0;
+            height: 100%;
         }
     }
 
@@ -49,12 +49,7 @@
 
     &__excerpt {
         margin-bottom: 2rem;
-    }
-
-    svg {
-        height: 1.5rem;
-        margin-right: 0.8rem;
-        width: 1.5rem;
+        line-height: 1.4em;
     }
 
     button,

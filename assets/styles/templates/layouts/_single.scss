@@ -1,13 +1,6 @@
 .Single {
-    padding-top: 16rem;
-    min-height: 75vh;
+    padding-top: 26rem;
     background: $greige;
-
-    svg {
-        height: 1.5rem;
-        margin-right: 0.8rem;
-        width: 1.5rem;
-    }
 
     button,
     a {
@@ -15,12 +8,16 @@
     }
 
     &__left {
-        position: relative;
+        z-index: map-get($zindex, section);
+    }
+
+    &__date {
         z-index: map-get($zindex, section);
     }
 
     &__right {
         z-index: map-get($zindex, under-section);
+
         a:hover {
             text-decoration: underline;
         }
@@ -31,6 +28,15 @@
         margin-bottom: 8rem;
     }
 
+    &__date span:first-child::before {
+        content: ' ';
+        display: block;
+        background: $black;
+        width: 3rem;
+        height: 0.1rem;
+        margin-right: 1rem;
+    }
+
     &__title {
         font-size: 6rem;
         line-height: 1.2em;
@@ -39,7 +45,6 @@
     }
 
     &__content {
-        margin-top: 5rem;
         z-index: map-get($zindex, section);
     }
 

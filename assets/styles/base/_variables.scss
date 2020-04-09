@@ -14,6 +14,7 @@ $zindex: (
     above-section: 20,
     section: 10,
     under-section: 9,
+    base: 1,
 );
 
 $fontweight: (
@@ -36,3 +37,5 @@ $font-path: '/assets/fonts/';
 
 $font-primary: Helvetica, Arial, sans-serif;
 $font-secondary: 'recoletaregular', sans-serif;
+
+$mobile-padding: 2rem;

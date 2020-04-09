@@ -6,7 +6,11 @@ use \Lisonsjeunesse\Core\Models\Taxonomy;
 use \Lisonsjeunesse\Constants\TaxonomyConstants;
 
 class Post {
-    public static function find(int $count = 6, int $paged = 0) {
+    public static function find(int $count = 0, int $paged = 0) {
+        if (!$count) {
+            $count = get_option('posts_per_page');
+        }
+
         $query = new \WP_Query(array(
             'posts_per_page' => $count,
             'status' => 'publish',
@@ -24,20 +28,23 @@ class Post {
             'posts_per_page' => $count,
             'status' => 'publish',
             'fields' => 'ids',
-            'post__not_in' => array($id),
             'orderby' => 'rand',
         ));
 
         return self::format($query->posts);
     }
 
-    public static function findByCategory(int $catId = null, int $count = 6, int $paged = 0) {
+    public static function findByCategory(int $catId = null, int $count = 0, int $paged = 0, $notIn = array()) {
+        if (!$count) {
+            $count = get_option('posts_per_page');
+        }
 
         $query = new \WP_Query(array(
             'posts_per_page' => $count,
             'cat' => $catId,
             'status' => 'publish',
             'fields' => 'ids',
+            'post__not_in' => $notIn,
             'paged' => $paged,
             'orderby' => 'date',
             'order' => 'DESC',
@@ -46,7 +53,11 @@ class Post {
         return self::format($query->posts);
     }
 
-    public static function findBut(array $ids = array(), int $count = 6) {
+    public static function findBut(array $ids = array(), int $count = 0) {
+        if (!$count) {
+            $count = get_option('posts_per_page');
+        }
+
         $query = new \WP_Query(array(
             'posts_per_page' => $count,
             'status' => 'publish',
@@ -68,6 +79,7 @@ class Post {
         if (!count($ids)) {
             return array();
         }
+
         $arr = array();
         foreach($ids as $id) {
             $p = get_post($id);
@@ -79,6 +91,7 @@ class Post {
             $temp->excerpt = Text::getExcerpt($temp->content);
             $temp->link = get_permalink($id);
             $temp->date = get_the_date('d/m/Y', $id);
+            $temp->timestamp = strtotime(str_replace('/', '-', $temp->date));
             $temp->previewImage = (int) get_post_thumbnail_id($id);
             $temp->categories = Taxonomy::findByPostId($id);
             $temp->mainCategory = self::getMainCategory($temp->categories);
@@ -98,7 +111,7 @@ class Post {
 
     public static function getMainCategory(array $categories) {
         foreach($categories as $category) {
-            if ($category->hasParent && $category->parent->slug !== TaxonomyConstants::age) {
+            if ($category->hasParent && $category->parent->slug === TaxonomyConstants::genre) {
                 return $category;
             }
         }

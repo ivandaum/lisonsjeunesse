@@ -6,16 +6,20 @@ use \Lisonsjeunesse\Constants\TaxonomyConstants;
 
 class Taxonomy {
     public static function find(string $taxonomy) {
-        return get_terms(array( 
+        return self::format( get_terms(array( 
             'taxonomy' => $taxonomy,
             'hide_empty' => false,
             'order' => 'ASC',
             'orderby' => 'name'
-        ));
+        )));
     }
 
     public static function findByPostId(int $id) {
         return self::format( get_the_category($id) );
+    }
+
+    public static function findBySlug(string $slug) {
+        return self::format( array(get_term_by('slug', $slug, 'category')) )[0];
     }
 
     public static function findOneById(int $id) {

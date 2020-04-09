@@ -5,7 +5,6 @@
 
     $menu = Menu::get('footer');
 ?>
-
     </main>
     <footer class="Footer">
         <div class="container is-flex">
