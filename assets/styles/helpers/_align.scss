@@ -36,7 +36,27 @@
 .is-column {
     @for $i from 1 through 12 {
         &.is-#{$i} {
-            width: $i / 12 * 100%;
+            @include desktop {
+                width: $i / 12 * 100%;
+            }
+        }
+
+        &.is-#{$i}-tablet {
+            @include tablet-only {
+                width: $i / 12 * 100%;
+            }
+        }
+
+        &.is-#{$i}-phone {
+            @include phone-only {
+                width: $i / 12 * 100%;
+            }
+        }
+
+        &.is-#{$i}-touch {
+            @include touch {
+                width: $i / 12 * 100%;
+            }
         }
     }
 }

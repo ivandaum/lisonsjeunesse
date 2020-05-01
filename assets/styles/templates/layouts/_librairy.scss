@@ -1,0 +1,33 @@
+.Librairy {
+    background: $greige;
+
+    &__header {
+        padding: 12rem $mobile-padding;
+        @include desktop {
+            padding: 20rem 0;
+        }
+    }
+
+    &__subtitle {
+        font-size: 4rem;
+        line-height: 5rem;
+        font-weight: map-get($fontweight, normal);
+
+        span {
+            z-index: 2;
+        }
+
+        @include touch {
+            font-size: 2.2rem;
+            line-height: 3rem;
+        }
+
+        .is-first-letter {
+            z-index: 1;
+        }
+    }
+
+    &__posts {
+        padding: 7rem 0;
+    }
+}

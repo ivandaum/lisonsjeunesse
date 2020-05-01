@@ -2,17 +2,35 @@
     padding-top: 26rem;
     background: $greige;
 
+    @include touch {
+        padding-top: 16rem;
+    }
     button,
     a {
         cursor: pointer;
     }
 
+    > .container {
+        @include touch {
+            display: block;
+        }
+    }
     &__left {
         z-index: map-get($zindex, section);
     }
 
     &__date {
         z-index: map-get($zindex, section);
+
+        @include touch {
+            justify-content: space-between;
+            font-size: 1.2rem;
+        }
+    }
+
+    .is-first-letter {
+        @include touch {
+        }
     }
 
     &__right {
@@ -35,17 +53,30 @@
         width: 3rem;
         height: 0.1rem;
         margin-right: 1rem;
+
+        @include touch {
+            width: 2rem;
+        }
     }
 
     &__title {
         font-size: 6rem;
         line-height: 1.2em;
-        font-weight: map-get($fontweight, normal);
         z-index: map-get($zindex, section);
+
+        @include touch {
+            font-size: 4rem;
+        }
     }
 
     &__content {
         z-index: map-get($zindex, section);
+    }
+
+    .button-librairy {
+        @include touch {
+            margin-bottom: 3rem;
+        }
     }
 
     &__comments--form {
@@ -75,7 +106,9 @@
 
         .comment-form-author,
         .comment-form-email {
-            width: 45%;
+            @include desktop {
+                width: 48%;
+            }
         }
 
         label {
@@ -87,12 +120,21 @@
             @extend .button;
             float: right;
             cursor: pointer;
+
+            @include touch {
+                width: 100%;
+            }
         }
     }
 
     &__comments--title {
         margin-top: 8rem;
         margin-bottom: 1rem;
+
+        @include touch {
+            margin: 3rem 0;
+        }
+
         &::before {
             content: ' ';
             display: block;
@@ -112,10 +154,17 @@
         border-top: 0.1rem solid $black;
         margin-top: 6rem;
         padding-top: 3rem;
+
+        @include touch {
+            display: block;
+        }
     }
 
     &__relatedPosts h2 {
         padding: 8rem 0 5rem 0;
+        @include touch {
+            padding: $mobile-padding 0;
+        }
 
         &::before {
             content: ' ';

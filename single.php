@@ -25,13 +25,13 @@
                     <span class="is-margin-right-3 is-flex is-center-y"><a href="<?= $single->author->url ?>"><?= $single->author->name ?></a></span>
                     <span class="is-flex is-center no-shrink"><?= Svg::print('clock'); ?><?= $single->readTime ?> min</span>
                 </p>
-                <h1 class="Single__title is-margin-top-2 is-relative"><?= $single->title ?></h1>
+                <h1 class="Single__title is-margin-top-2 is-margin-top-2-touch is-margin-bottom-2-touch is-relative has-font-serif"><?= $single->title ?></h1>
                 <div class="Single__content is-margin-top-5 is-relative wp-content">
                     <?= $single->content ?>
                 </div>
                 
                 <div class="Single__footer is-flex is-justified">
-                    <?php Template::component('button/add-librairy', array('id' => $single->id)); ?>
+                    <?php Template::component('button/add-librairy', array('id' => $single->id, 'active' => $single->isLiked)); ?>
                     <span class="no-shrink"><?= $single->date ?> par <a href="<?= $single->author->url ?>"><?= $single->author->name ?></a></span>
                 </div>
 
@@ -55,7 +55,7 @@
 
         <div class="Single__relatedPosts has-background-white">
             <div class="container">
-                <h2 class="is-secondary-title is-flex is-center-y">À lire aussi</h2>
+                <h2 class="is-secondary-title is-flex is-center-y has-font-serif">À lire aussi</h2>
                 <?php Template::layout('posts', array('noPagination' => true, 'posts' => $single->posts)); ?>
             </div>
         </div>

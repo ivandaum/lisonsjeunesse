@@ -1,41 +1,41 @@
 @font-face {
-    font-family: 'recoletablack';
+    font-family: 'recoleta';
     src: url($font-path + 'recoleta/recoleta_black-webfont.woff2')
             format('woff2'),
         url($font-path + 'recoleta/recoleta_black-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: 900;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'recoletabold';
+    font-family: 'recoleta';
     src: url($font-path + 'recoleta/recoleta_bold-webfont.woff2')
             format('woff2'),
         url($font-path + 'recoleta/recoleta_bold-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'recoletalight';
+    font-family: 'recoleta';
     src: url($font-path + 'recoleta/recoleta_light-webfont.woff2')
             format('woff2'),
         url($font-path + 'recoleta/recoleta_light-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'recoletamedium';
+    font-family: 'recoleta';
     src: url($font-path + 'recoleta/recoleta_medium-webfont.woff2')
             format('woff2'),
         url($font-path + 'recoleta/recoleta_medium-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'recoletaregular';
+    font-family: 'recoleta';
     src: url($font-path + 'recoleta/recoleta_regular-webfont.woff2')
             format('woff2'),
         url($font-path + 'recoleta/recoleta_regular-webfont.woff')
@@ -45,20 +45,20 @@
 }
 
 @font-face {
-    font-family: 'recoletasemibold';
+    font-family: 'recoleta';
     src: url($font-path + 'recoleta/recoleta_semibold-webfont.woff2')
             format('woff2'),
         url($font-path + 'recoleta/recoleta_semibold-webfont.woff')
             format('woff');
-    font-weight: normal;
+    font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'recoletathin';
+    font-family: 'recoleta';
     src: url($font-path + 'recoleta/recoleta_thin-webfont.woff2')
             format('woff2'),
         url($font-path + 'recoleta/recoleta_thin-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: 200;
     font-style: normal;
 }

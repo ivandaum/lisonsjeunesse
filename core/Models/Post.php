@@ -95,6 +95,12 @@ class Post {
             $temp->previewImage = (int) get_post_thumbnail_id($id);
             $temp->categories = Taxonomy::findByPostId($id);
             $temp->mainCategory = self::getMainCategory($temp->categories);
+            
+            $temp->isLiked = false;
+            if(isset($_COOKIE['librairy'])) {
+                $ids = json_decode(str_replace('\"','"', $_COOKIE['librairy']));
+                $temp->isLiked = in_array($id, $ids);
+            }
 
             $temp->readTime = round(count(explode(' ', strip_tags($temp->content))) / 200);
             $author = new \stdClass();

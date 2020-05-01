@@ -18,7 +18,7 @@
                 <?= Image::create($post->previewImage); ?>
             </div>
         <?php endif; ?>
-        <h3 class="PostPreview__title"><?= $post->title ?></h3>
+        <h3 class="PostPreview__title has-font-serif"><?= $post->title ?></h3>
     </a>
         
     <p class="PostPreview__date is-flex is-justified">
@@ -27,5 +27,5 @@
     </p>
     <p class="PostPreview__excerpt"><?= $post->excerpt ?></p>
 
-    <?php Template::component('button/add-librairy', array('id' => $post->id)); ?>
+    <?php Template::component('button/add-librairy', array('id' => $post->id, 'active' => $post->isLiked)); ?>
 </div>

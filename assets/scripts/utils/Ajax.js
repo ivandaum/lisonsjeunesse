@@ -1,27 +1,12 @@
-// Example of use in Newsletter.js
-class Ajax {
-  constructor(url, params) {
-    return new Promise((resolve, reject) => {
-      const http = new XMLHttpRequest();
+export const post = ({ url, params }) => {
+    const http = new XMLHttpRequest()
+    http.open('POST', url)
+    http.setRequestHeader('content-type', 'application/json')
 
-      if (!http) {
-        console.error('Cannot create an XMLHTTP instance');
-      }
-
-      http.onreadystatechange = () => {
-        if (http.readyState === http.DONE) {
-          if (http.status === 200) {
-            resolve(JSON.parse(http.responseText));
-          } else {
-            reject(new Error(http.statusText));
-          }
-        }
-      };
-
-      http.open('POST', url);
-      http.send(params);
-    });
-  }
+    return new window.Promise((resolve) => {
+        const status = http.status
+        http.onload = () => resolve({ status, data: http.responseText })
+        http.onerror = () => Error({ status, data: http.statusText })
+        http.send(params)
+    })
 }
-
-export default Ajax;

@@ -21,6 +21,7 @@ $fontweight: (
     light: 300,
     normal: normal,
     medium: 500,
+    semibold: 600,
     bold: bold,
 );
 
@@ -33,9 +34,9 @@ $breakpoints: (
     phone-xs: 360px,
 );
 
-$font-path: '/assets/fonts/';
+$font-path: '/wp-content/themes/lisonsjeunesse-2020/assets/fonts/';
 
 $font-primary: Helvetica, Arial, sans-serif;
-$font-secondary: 'recoletaregular', sans-serif;
+$font-secondary: 'recoleta', sans-serif;
 
-$mobile-padding: 2rem;
+$mobile-padding: 4.5rem;

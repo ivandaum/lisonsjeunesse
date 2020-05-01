@@ -11,7 +11,7 @@ class Home {
         $this->mainCategory = Taxonomy::findBySlug( TaxonomyConstants::genre );
         $this->categories = Taxonomy::findByParent($this->mainCategory->id);
         $this->posts = array();
-
+        $posts = array();
         $ids = array();
         foreach($this->categories as $k => $category) {
             $this->posts[] = Post::findByCategory($category->id, 1, 1, $ids)[0];
@@ -21,5 +21,7 @@ class Home {
         uasort($this->posts, function($a, $b) {
             return $b->timestamp - $a->timestamp;
         });
+
+
     }
 }

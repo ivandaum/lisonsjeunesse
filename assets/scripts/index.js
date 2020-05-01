@@ -6,6 +6,7 @@ import Highway from '@dogstudio/highway'
 import DefaultRenderer from './renderer/DefaultRenderer'
 import HomeRenderer from './renderer/HomeRenderer'
 import DefaultTransition from './transitions/DefaultTransition'
+import MyLibrairy from './tools/MyLibrairy'
 // import NavbarBehavior from './transitions/NavbarBehavior';
 
 // import HomeTransition from './transitions/HomeTransition';
@@ -14,6 +15,8 @@ import DefaultTransition from './transitions/DefaultTransition'
 
 // store.setGlobalVars();
 // window.addEventListener('resize', () => store.setGlobalVars());
+
+const Librairy = new MyLibrairy()
 
 const core = new Highway.Core({
     renderers: {
@@ -33,14 +36,20 @@ const core = new Highway.Core({
 // NavbarBehavior.bindClosers();
 // const navbarAnimation = NavbarBehavior.firstShow();
 
+function detachFromCore() {
+    const $elements = document.querySelectorAll('.js-detach-core')
+    core.detach($elements)
+}
+
+detachFromCore()
 core.on('NAVIGATE_OUT', () => {
     document.body.classList.add('loading')
 })
 
-// core.detach(document.querySelectorAll('a[href^="mailto"'));
-// core.on('NAVIGATE_END', () => {
-//   core.detach(document.querySelectorAll('a[href^="mailto"'));
-// });
+core.on('NAVIGATE_END', () => {
+    Librairy.bindButtons()
+    detachFromCore()
+})
 
 core.on('NAVIGATE_IN', ({ to }) => {
     document.body.classList = to.page.body.classList

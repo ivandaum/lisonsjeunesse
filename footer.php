@@ -7,7 +7,7 @@
 ?>
     </main>
     <footer class="Footer">
-        <div class="container is-flex">
+        <div class="container is-flex is-wrap">
             <ul class="Footer__links">
             <?php foreach($menu as $item): ?>
                 <li class="Footer__links--item">
@@ -26,7 +26,7 @@
 
             <div class="Footer__contact no-shrink">
                 <div>
-                    <h2>Nos réseaux sociaux</h2>
+                    <h2 class="has-font-serif">Nos réseaux sociaux</h2>
                     <ul class="is-flex">
                         <li><a href="<?= NetworksConstants::facebook ?>">Facebook</a></li>
                         <li><a href="<?= NetworksConstants::twitter ?>">Twitter</a></li>

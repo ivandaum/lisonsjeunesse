@@ -16,7 +16,7 @@
 
 ?>
     <article class="Category" data-router-view="category">
-        <h1 class="is-title is-center is-flex"><?= $category->name ?></h1>
+        <h1 class="is-title is-center is-flex has-font-serif "><?= $category->name ?></h1>
         <div class="has-background-white">
             <div class="container">
                 <?php Template::layout('filters', array('categories' => $category->subCategories)); ?>  

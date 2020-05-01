@@ -1,6 +1,7 @@
 import Highway from '@dogstudio/highway'
 import { isFunction } from '../functions'
 import Lazyloading from '../vendor/Lazyloading'
+import InfiniteLoading from '../tools/InfiniteLoading'
 
 class DefaultRenderer extends Highway.Renderer {
     onLeave() {
@@ -22,6 +23,8 @@ class DefaultRenderer extends Highway.Renderer {
             elements_selector: 'img, .lazy',
             use_native: false,
         })
+
+        new InfiniteLoading()
     }
 }
 

@@ -406,6 +406,7 @@ picture {
     position: relative;
     display: block;
     width: 100%;
+    background-size: cover;
 
     img {
         display: block;
@@ -416,10 +417,12 @@ picture {
         transition: transform $speed $bezier;
         transform-origin: center center;
         object-fit: cover;
+        opacity: 0;
     }
 
     img.loaded {
         animation: fade-in 1s;
+        opacity: 1;
     }
 }
 

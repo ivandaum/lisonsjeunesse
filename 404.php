@@ -3,7 +3,7 @@
 ?>
     <article class="Category" data-router-view="page">
         <div class="container">
-            <h1 class="is-title is-center is-flex">Page non trouvée.</h1>
+            <h1 class="is-title is-center is-flex has-font-serif ">Page non trouvée.</h1>
             <p class="is-center is-flex">La page que vous recherchez n'existe pas, ou a été déplacée.</p>
 
             <div class="is-center is-flex">

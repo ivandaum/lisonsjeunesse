@@ -2,6 +2,12 @@
     font-size: 1.6rem;
     line-height: 1.2em;
     padding: 0 2rem;
+    overflow-x: auto;
+
+    @include touch {
+        margin: 0 #{-$mobile-padding};
+        width: 100vw;
+    }
 
     li {
         text-align: center;

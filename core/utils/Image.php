@@ -7,7 +7,7 @@ class Image {
     public static $title;
 
     // main function, use create with ACF image (or image ID) to generate a html element with srcset
-    public static function create($image, $padding = true) {
+    public static function create($image, $relations = array()) {
         if (is_int($image)) {
             $image = self::createFromId($image);
 
@@ -20,13 +20,16 @@ class Image {
         self::$title = $image['title'];
 
         $sources = array();
-        $relations = array(
-            '1279' => 'max',
-            '999' => 'widescreen',
-            '769' => 'phone',
-            '360' => 'phone-s',
-            '1' => '1x1',
-        );
+
+        if (empty($relations)) {
+            $relations = array(
+                '1279' => 'max',
+                '999' => 'widescreen',
+                '769' => 'phone',
+                '360' => 'phone-s',
+                '1' => '1x1',
+            );
+        }
 
         foreach ($relations as $breakpoint => $imageName) {
             $sources[$breakpoint] = array(
@@ -44,7 +47,7 @@ class Image {
     }
 
     public static function createThumbnail($image) {
-        return self::create($image, array( '1' => '1x1', '360' => 'phone'));
+        return self::create($image, array( '999' => 'phone', '360' => 'phone', '1' => '1x1'));
     }
 
     public static function createFromId($id = null) {

@@ -1,19 +1,23 @@
 .LastPosts {
-    padding-top: 3rem;
+    @include desktop {
+        padding-top: 3rem;
+    }
 
     .is-column {
         margin-bottom: 7.5rem;
 
-        &:nth-of-type(3n + 1) {
-            padding-right: 3rem;
-        }
+        @include desktop {
+            &:nth-of-type(3n + 1) {
+                padding-right: 3rem;
+            }
 
-        &:nth-of-type(3n + 2) {
-            padding: 0 1.5rem;
-        }
+            &:nth-of-type(3n + 2) {
+                padding: 0 1.5rem;
+            }
 
-        &:nth-of-type(3n + 3) {
-            padding-left: 3rem;
+            &:nth-of-type(3n + 3) {
+                padding-left: 3rem;
+            }
         }
     }
 }

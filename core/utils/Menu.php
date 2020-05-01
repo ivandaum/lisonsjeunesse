@@ -27,6 +27,7 @@ class Menu {
             $item->isExternal = Url::isExternal($object->url);
             $item->uniqueId = $object->object_id . '-' . rand(0, time());
             $item->isActive = $object->url === Url::getCurrent();
+            $item->slug = str_replace(Url::getRoot() . '/', '', $object->url);
             $item->parent = (int) $object->post_parent;
             $item->child = array();
             $items[] = $item;

@@ -7,6 +7,10 @@
     margin: 3rem 0 6rem 0;
     background: transparent;
 
+    @include touch {
+        margin: 1.5rem 0;
+    }
+
     &:hover {
         background: $black;
         color: $white;
@@ -16,16 +20,22 @@
 .button-librairy {
     cursor: pointer;
 
-    &--remove {
-        display: none;
+    span {
+        top: 0;
+        left: 0;
+        transition: opacity $speed $bezier;
     }
 
-    &.is-active {
-        .button-librairy--add {
-            display: none;
-        }
-        .button-librairy--remove {
-            display: block;
-        }
+    &--remove {
+        opacity: 0;
+        position: absolute;
+    }
+
+    &.is-active &--add {
+        opacity: 0;
+    }
+
+    &.is-active &--remove {
+        opacity: 1;
     }
 }

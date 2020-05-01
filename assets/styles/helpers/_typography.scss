@@ -14,6 +14,10 @@
     background: $white;
 }
 
+.has-text-center {
+    text-align: center;
+}
+
 .has-text-bold {
     font-weight: map-get($fontweight, bold);
 }
@@ -22,8 +26,14 @@
     font-size: 8rem;
     line-height: 1.2em;
     font-weight: map-get($fontweight, normal);
-    padding: 6rem 0 6rem 0;
+    padding: 6rem 0;
     z-index: map-get($zindex, section);
+    text-align: center;
+
+    @include touch {
+        font-size: 6rem;
+        padding: 3rem 0;
+    }
 }
 
 .is-secondary-title {
@@ -31,6 +41,15 @@
     line-height: 1.2em;
     font-weight: map-get($fontweight, normal);
     z-index: map-get($zindex, section);
+
+    @include touch {
+        font-size: 3rem;
+    }
+}
+
+.has-font-serif {
+    font-family: $font-secondary;
+    font-weight: map-get($fontweight, semibold);
 }
 
 .is-first-letter {
@@ -41,12 +60,19 @@
     z-index: map-get($zindex, under-section);
     left: -10rem;
     transform: translateY(-5rem);
+    font-family: $font-secondary;
+
+    @include touch {
+        font-size: 15rem;
+        left: -$mobile-padding;
+        top: $mobile-padding;
+    }
 }
 
 .wp-content {
     p {
         font-size: 1.6rem;
-        line-height: 1.5625em;
+        line-height: 2.5rem;
         margin-bottom: 1em;
 
         &.has-small-font-size {
@@ -61,6 +87,11 @@
 
             em {
                 font-style: normal;
+            }
+
+            @include touch {
+                font-size: 2rem;
+                margin-bottom: 3rem;
             }
         }
     }
@@ -78,28 +109,41 @@
     h4,
     h5,
     h6 {
-        font-weight: map-get($fontweight, normal);
+        font-family: $font-secondary;
+        font-weight: map-get($fontweight, semibold);
         margin: 1.125em 0;
     }
 
     h2 {
         font-size: 4rem;
+        @include touch {
+            font-size: 2.5rem;
+        }
     }
 
     h3 {
         font-size: 3.5rem;
+        @include touch {
+            font-size: 2.2rem;
+        }
     }
 
     h4 {
         font-size: 3rem;
+        @include touch {
+            font-size: 2rem;
+        }
     }
 
     h5 {
         font-size: 2.5rem;
+        @include touch {
+            font-size: 1.8rem;
+        }
     }
 
     h6 {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 
     ul li {
@@ -115,6 +159,12 @@
         margin: 5rem 0;
         padding: 25rem 2rem;
         position: relative;
+        font-family: $font-secondary;
+        position: relative;
+
+        @include touch {
+            padding: 10rem 0 5rem 0;
+        }
 
         &::before {
             content: '“';
@@ -125,7 +175,13 @@
             position: absolute;
             z-index: map-get($zindex, section);
             left: -10rem;
-            top: 15rem;
+            top: 20rem;
+
+            @include touch {
+                font-size: 40rem;
+                left: -2rem;
+                top: 7.5rem;
+            }
         }
 
         &::after {
@@ -137,6 +193,11 @@
             top: 0;
             content: ' ';
             z-index: map-get($zindex, under-section);
+
+            @include touch {
+                left: -$mobile-padding;
+                right: -$mobile-padding;
+            }
         }
 
         p {
@@ -146,6 +207,10 @@
             margin-bottom: 0;
             position: relative;
             z-index: map-get($zindex, above-section);
+
+            @include touch {
+                font-size: 2.2rem;
+            }
         }
     }
 }
