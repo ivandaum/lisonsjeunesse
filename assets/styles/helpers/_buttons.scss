@@ -21,6 +21,8 @@
     cursor: pointer;
     height: 3rem;
     overflow: hidden;
+    position: relative;
+    z-index: map-get($zindex, section);
 
     svg path {
         transition: fill $speed $bezier;

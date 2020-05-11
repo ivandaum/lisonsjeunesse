@@ -23,6 +23,19 @@ class Post {
         return self::format($query->posts);
     }
 
+    public static function search(string $search) {
+        $query = new \WP_Query(array(
+            'posts_per_page' => -1,
+            'status' => 'publish',
+            'fields' => 'ids',
+            's' => $search,
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ));
+
+        return self::format($query->posts);
+    }
+
     public static function findRelatedPost(int $id, int $count = 3) {
         $query = new \WP_Query(array(
             'posts_per_page' => $count,

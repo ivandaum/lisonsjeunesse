@@ -30,12 +30,17 @@
         }
     }
 
-    &__links a {
-        padding: 0 2.2rem;
+    &__links a,
+    &__links button {
+        padding: 0 2rem;
         height: 100%;
         width: 100%;
-
         border: 0.1rem solid transparent;
+        cursor: pointer;
+    }
+
+    button svg {
+        margin-right: 0;
     }
 
     &__links > li:hover {
@@ -51,16 +56,16 @@
     }
 
     &__sublinks {
-        padding-top: 1rem;
+        padding: 1rem 0;
         display: none;
         text-align: left;
         background: $white;
         right: 0;
-        width: 120%;
+        width: 100%;
         border: 0.1rem solid $greige;
 
         li {
-            height: 4rem;
+            padding: 1rem 0;
         }
 
         li:hover {
@@ -76,5 +81,14 @@
         color: $black;
         font-size: 0.8em;
         text-align: left;
+    }
+
+    &__search-overlay {
+        z-index: map-get($zindex, above-header);
+        transform: translateY(-100%);
+    }
+
+    &.is-search &__search-overlay {
+        transition: transform $speed $bezier;
     }
 }
