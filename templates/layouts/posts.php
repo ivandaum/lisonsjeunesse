@@ -12,10 +12,16 @@
         <?php Template::component('preview/post', array('post' => $post)); ?>
     </div>
     <?php endforeach; ?>
+
+    <?php if(!count($posts)): ?>
+        <p class="is-secondary-title has-font-serif has-width-100 has-text-center">Il n'y a pas d'articles.</p>
+    <?php endif; ?>
 </div>
 
-<?php if (!isset($noPagination) || $noPagination === false): ?>
-<div class="is-flex is-center has-width-100">
-    <a class="button is-flex is-center js-detach-core js-infinite-load-btn" href="<?= Pagination::getNextPage() ?>">Charger plus d'articles</a>
-</div>
+<?php if(!count($posts)): ?>
+    <?php if (!isset($noPagination) || $noPagination === false): ?>
+    <div class="is-flex is-center has-width-100">
+        <a class="button is-flex is-center js-detach-core js-infinite-load-btn" href="<?= Pagination::getNextPage() ?>">Charger plus d'articles</a>
+    </div>
+    <?php endif; ?>
 <?php endif; ?>

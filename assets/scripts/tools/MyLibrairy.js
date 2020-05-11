@@ -6,6 +6,7 @@ const ACTIVE_BTN = 'is-active'
 export default class MyLibrairy {
     constructor() {
         this.$menuItem = document.querySelector('.js-librairy-pins')
+        this.$link = document.querySelector('.js-biblioteque')
         this.bindButtons()
     }
 
@@ -36,7 +37,12 @@ export default class MyLibrairy {
             btn.classList.add(ACTIVE_BTN)
         }
 
-        this.$menuItem.innerHTML = ids.length
+        const numberNavbar = ids.length ? ids.length : ''
+        this.$menuItem.innerHTML = numberNavbar
+
+        const url = this.$link.href.split('?t')
+        this.$link.href = url[0] + '?t=' + Date.now()
+
         Cookies.set(COOKIE_NAME, ids)
     }
 }

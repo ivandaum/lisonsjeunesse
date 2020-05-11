@@ -1,6 +1,7 @@
 <?php
     use \Lisonsjeunesse\Core\Utils\Menu;
     use \Lisonsjeunesse\Core\Utils\Text;
+    use Lisonsjeunesse\Constants\TaxonomyConstants;
 
     $menu = Menu::get('header');
     $librairyCount = 0;
@@ -16,9 +17,9 @@
     <ul class="Navbar__links is-flex no-shrink">
         <?php foreach($menu as $item): ?>
             <li class="Navbar__item Navbar__item--main is-relative no-shrink">
-                <a class="is-center is-flex js-<?= $item->slug ?>" href="<?= $item->url ?>">
+                <a class="is-center is-flex js-<?= $item->slug ?>" href="<?= $item->url ?><?php if($item->slug === TaxonomyConstants::librairy): ?>?t<?php endif; ?>">
                 <?= $item->title ?>
-                <?php if( $item->slug === 'biblioteque'): ?>
+                <?php if( $item->slug === TaxonomyConstants::librairy): ?>
                     <span class="Navbar__librairy-pins js-librairy-pins">
                         <?php if($librairyCount): ?>
                             <?= $librairyCount ?>
