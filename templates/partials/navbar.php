@@ -12,7 +12,7 @@
         $librairyCount = count($ids);
     }
 ?>
-<nav class="Navbar is-flex is-absolute is-justified">
+<nav class="Navbar is-flex is-absolute is-justified js-nav">
     <a href="/" class="Navbar__logo has-font-serif">
         Lisons<br>Jeunesse
     </a>
@@ -44,14 +44,15 @@
             </li>
         <?php endforeach; ?>
 
-        <li class="Navbar__item Navbar__search Navbar__item--main is-relative no-shrink js-search">
+        <li class="Navbar__item Navbar__search Navbar__item--main is-relative no-shrink">
             <button class="js-search"><?= Svg::print('search') ?></button>
         </li>
     </ul>
 </nav>
 
-<div class="Navbar__search-overlay is-absolute has-background-white is-hidden has-width-100 is-padding-top-2 is-padding-bottom-2">
-    <div class="container">
-        <?= Template::component('search'); ?>
+<div class="Navbar__search-overlay is-absolute has-background-white has-width-100 is-padding-top-3 is-padding-bottom-2 is-padding-top-2-touch is-padding-bottom-2-touch">
+    <div class="container is-flex is-center">
+        <?= Template::component('search', array('noIcon' => true)); ?>
+        <button class="Navbar__search-close js-close-search has-height-100 is-block">&times;</button>
     </div>
 </div>

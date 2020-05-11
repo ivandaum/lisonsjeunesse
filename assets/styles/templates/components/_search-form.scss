@@ -7,7 +7,7 @@
         font-size: 3rem;
         border: 0.5rem solid $white;
         background: transparent;
-        padding-left: 8rem;
+        padding-left: 7rem;
 
         @include touch {
             font-size: 1.6rem;
@@ -17,7 +17,7 @@
     }
 
     &__svg {
-        width: 4rem;
+        width: 3rem;
         margin: 0 3rem;
         transform: translateY(-0.2rem);
 
@@ -30,5 +30,9 @@
     svg {
         height: 100%;
         width: 100%;
+    }
+
+    &.no-icon input {
+        padding-left: 0 !important;
     }
 }

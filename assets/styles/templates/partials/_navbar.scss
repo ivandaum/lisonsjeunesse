@@ -86,9 +86,23 @@
     &__search-overlay {
         z-index: map-get($zindex, above-header);
         transform: translateY(-100%);
-    }
-
-    &.is-search &__search-overlay {
         transition: transform $speed $bezier;
     }
+
+    &__search-close {
+        color: $black;
+        height: 100%;
+        font-size: 3em;
+        margin-left: 4rem;
+        cursor: pointer;
+
+        @include touch {
+            font-size: 3rem;
+            margin-left: 1rem;
+        }
+    }
+}
+
+body.is-search .Navbar__search-overlay {
+    transform: translateY(0);
 }

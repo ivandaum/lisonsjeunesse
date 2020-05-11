@@ -7,7 +7,7 @@ import DefaultRenderer from './renderer/DefaultRenderer'
 import HomeRenderer from './renderer/HomeRenderer'
 import DefaultTransition from './transitions/DefaultTransition'
 import MyLibrairy from './tools/MyLibrairy'
-// import NavbarBehavior from './transitions/NavbarBehavior';
+import Navbar from './tools/Navbar'
 
 // import HomeTransition from './transitions/HomeTransition';
 // import CompanyTransition from './transitions/CompanyTransition';
@@ -17,6 +17,7 @@ import MyLibrairy from './tools/MyLibrairy'
 // window.addEventListener('resize', () => store.setGlobalVars());
 
 const Librairy = new MyLibrairy()
+const Nav = new Navbar()
 
 const core = new Highway.Core({
     renderers: {
@@ -31,6 +32,8 @@ const core = new Highway.Core({
         default: DefaultTransition,
     },
 })
+
+Nav.show()
 
 // NavbarBehavior.bind(document.querySelector('.js-navbar-btn'));
 // NavbarBehavior.bindClosers();
