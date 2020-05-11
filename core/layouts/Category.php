@@ -15,6 +15,7 @@ class Category {
         }
 
         $this->posts = Post::findByCategory($this->id, 0, get_query_var('paged'));
+        $this->firstPost = $this->posts[0];
 
         if ($this->hasParent) {
             $this->subCategories = Taxonomy::findByParent($this->parent->id);

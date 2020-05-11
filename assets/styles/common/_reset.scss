@@ -404,19 +404,12 @@ svg {
 
 picture {
     position: relative;
-    display: block;
-    width: 100%;
     background-size: cover;
 
     img {
         display: block;
-        top: 0;
-        position: absolute;
-        width: 100%;
-        height: 100%;
         transition: transform $speed $bezier;
         transform-origin: center center;
-        object-fit: cover;
         opacity: 0;
     }
 

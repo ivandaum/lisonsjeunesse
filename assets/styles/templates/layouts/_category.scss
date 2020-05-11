@@ -1,7 +1,11 @@
 .Category {
     padding-top: 16rem;
     min-height: 75vh;
-    background: $greige;
+    background: $white;
+
+    &--greige {
+        background: $greige;
+    }
 
     h1 {
         text-align: center;

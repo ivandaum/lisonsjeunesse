@@ -1,7 +1,10 @@
 <?php use \Lisonsjeunesse\Core\Utils\Svg; ?>
 <?php if(isset($id)): ?>
-<button class="button-librairy js-add-to-librairy is-relative has-width-100 <?php if($active): ?>is-active<?php endif; ?>" data-id="<?= $id ?>">
-    <span class="button-librairy--add is-flex is-center-y"><?= Svg::print('like'); ?> Ajouter à ma bibliothèque</span>
-    <span class="button-librairy--remove is-flex is-center-y"><?= Svg::print('like-full'); ?> Retirer de ma bibliothèque</span>
+<button class="button-librairy js-add-to-librairy is-relative has-width-100 is-flex is-center-y <?php if($active): ?>is-active<?php endif; ?>" data-id="<?= $id ?>">
+    <?= Svg::print('like'); ?>
+    <div class="button-librairy--wording has-width-100 has-text-left">
+        <span class="is-block">Ajouter à ma bibliothèque</span>
+        <span class="is-block">Retirer de ma bibliothèque</span>
+    </div>
 </button>
 <?php endif; ?>

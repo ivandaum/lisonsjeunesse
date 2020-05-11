@@ -15,6 +15,7 @@
             display: block;
         }
     }
+
     &__left {
         z-index: map-get($zindex, section);
     }
@@ -44,6 +45,10 @@
     &__image {
         top: 5rem;
         margin-bottom: 8rem;
+    }
+
+    img {
+        width: 100%;
     }
 
     &__date span:first-child::before {

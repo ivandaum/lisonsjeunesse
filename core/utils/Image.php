@@ -107,7 +107,7 @@ class Image {
     public static function generateSrcset($sources = array()) {
 
         $last = array_values(array_slice($sources, 1))[0];
-
+        // style="padding-top: ' . ($last['height'] / $last['width'] * 100). '%; background-image: url(' . $sources['1']['src'] . ')"
         $html = '';
         $html .= '<picture style="padding-top: ' . ($last['height'] / $last['width'] * 100). '%; background-image: url(' . $sources['1']['src'] . ')">';
 

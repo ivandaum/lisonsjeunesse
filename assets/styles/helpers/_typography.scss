@@ -18,6 +18,10 @@
     text-align: center;
 }
 
+.has-text-left {
+    text-align: left;
+}
+
 .has-text-bold {
     font-weight: map-get($fontweight, bold);
 }

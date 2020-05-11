@@ -1,0 +1,41 @@
+.Featured {
+    padding-bottom: 12rem;
+
+    > .container {
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    &__image {
+        picture {
+            z-index: map-get($zindex, section);
+            position: relative;
+            width: 100%;
+        }
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform $speed $bezier;
+        }
+
+        &:hover img {
+            transform: scale(1.05);
+        }
+    }
+
+    &__category {
+        font-size: 12rem;
+        z-index: map-get($zindex, above-section);
+        transition: transform $speed * 2 $bezier, color $speed * 2 linear;
+    }
+
+    &.is-hover &__category {
+        color: $white;
+        transform: translateX(-75%);
+        z-index: map-get($zindex, under-section);
+    }
+
+    &__content {
+    }
+}

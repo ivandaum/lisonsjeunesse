@@ -7,10 +7,13 @@ export default class InfiniteLoading {
 
     bind() {
         this.$btn = document.querySelector('.js-infinite-load-btn')
-        this.$btn.addEventListener('click', (e) => {
-            e.preventDefault()
-            this.load()
-        })
+
+        if (this.$btn) {
+            this.$btn.addEventListener('click', (e) => {
+                e.preventDefault()
+                this.load()
+            })
+        }
     }
 
     async load() {
