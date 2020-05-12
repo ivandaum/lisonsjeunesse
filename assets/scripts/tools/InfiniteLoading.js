@@ -1,17 +1,12 @@
 import Lazyloading from '../vendor/Lazyloading'
-import { observeVisibility } from '../functions'
 
 import { post } from '../utils/Ajax'
 export default class InfiniteLoading {
     constructor() {
-        this.isLoading = false
+        this.canLoad = true
         this.isFirstLoad = true
 
-        this.loadImage()
         this.bind()
-    }
-
-    loadImage() {
         this.Lazyloading = new Lazyloading({
             load_delay: 10,
             elements_selector: 'img:not(.loaded)',
@@ -19,29 +14,41 @@ export default class InfiniteLoading {
         })
     }
 
+    loadImage() {
+        this.Lazyloading.update()
+    }
+
     bind() {
         this.$btn = document.querySelector('.js-infinite-load-btn')
+        this.$limit = document.querySelector('.js-ajax-preload')
         this.$container = document.querySelector('.js-posts')
 
         if (this.$btn) {
             this.$btn.addEventListener('click', (e) => {
                 e.preventDefault()
+                this.$btn.classList.add('loading')
+                this.$btn.style = 'pointer-events: none'
                 this.load()
             })
         }
     }
 
     bindAutoLoad() {
-        this.$btn.style.display = 'none'
-        observeVisibility(this.$btn, (visible) =>
-            visible ? this.load() : null,
+        const observer = new IntersectionObserver(
+            (changes) => {
+                const [{ isIntersecting }] = changes
+                if (isIntersecting) this.load()
+            },
+            {
+                threshold: [0.1],
+            },
         )
+        observer.observe(this.$limit)
     }
 
     async load() {
-        if (this.isLoading) return
+        if (!this.canLoad) return false
 
-        this.isLoading = true
         const url = window.ajaxUrl
         const dataset = JSON.parse(this.$btn.dataset.ajax)
 
@@ -64,10 +71,13 @@ export default class InfiniteLoading {
 
             if (this.isFirstLoad) {
                 this.bindAutoLoad()
+                this.isFirstLoad = false
             }
 
-            this.isLoading = false
-            this.isFirstLoad = false
+            this.canLoad = data.loadMore
+            if (!this.canLoad) {
+                this.$btn.remove()
+            }
         } catch (e) {
             console.log(new Error(e))
         }

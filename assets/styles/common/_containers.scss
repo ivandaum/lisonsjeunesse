@@ -11,3 +11,8 @@
         padding: 0 $mobile-padding;
     }
 }
+
+.js-ajax-preload {
+    width: 100%;
+    z-index: map-get($zindex, base);
+}

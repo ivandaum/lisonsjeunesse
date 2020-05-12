@@ -120,7 +120,7 @@ class Image {
         }
 
         if (isset($last)) {
-            $html .= '<img src="'. $sources['1']['src'] .'" data-src="' . $last['src'] . '" alt="' . self::$title . '" />';
+            $html .= '<img class="lazy" src="'. $sources['1']['src'] .'" data-src="' . $last['src'] . '" alt="' . self::$title . '" />';
         }
         $html .= '</picture>';
         return $html;

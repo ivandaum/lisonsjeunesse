@@ -21,11 +21,14 @@ class Ajax {
         }
         
         $page = $page ? $page : 1;
-        $posts = Post::findByCategory($cat, get_option('posts_per_page'), $page);
+        $count = get_option('posts_per_page');
+
+        $posts = Post::findByCategory($cat, $count, $page);
         $html = Template::layout('posts', array('posts' => $posts, 'noPagination' => true));
         $html = mb_convert_encoding($html, 'ISO-8859-1', 'UTF-8');
         
-        $this->toJson(array('success' => true, 'html' => utf8_encode($html))); 
+        $loadMore = count($posts) >= $count;
+        $this->toJson(array('loadMore' => $loadMore, 'success' => true, 'html' => utf8_encode($html))); 
     }
 
     public function toJson($data) {

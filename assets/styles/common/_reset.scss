@@ -408,13 +408,12 @@ picture {
 
     img {
         display: block;
-        transition: transform $speed $bezier;
+        transition: opacity $speed * 2 $bezier, transform $speed * 2 $bezier;
         transform-origin: center center;
         opacity: 0;
     }
 
     img.loaded {
-        animation: fade-in 1s;
         opacity: 1;
     }
 }

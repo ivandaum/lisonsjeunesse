@@ -9,7 +9,7 @@ class Pagination {
     }
 
     public static function getCurrentPage() {
-        $paged = (int) get_query_var('paged');
+        $paged = isset($_POST['page']) ? $_POST['page'] : (int) get_query_var('paged');
         if ($paged === 0) {
             $paged = 1;
         }
