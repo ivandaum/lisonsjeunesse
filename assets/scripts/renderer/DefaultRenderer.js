@@ -1,6 +1,5 @@
 import Highway from '@dogstudio/highway'
 import { isFunction } from '../functions'
-import Lazyloading from '../vendor/Lazyloading'
 import InfiniteLoading from '../tools/InfiniteLoading'
 
 class DefaultRenderer extends Highway.Renderer {
@@ -17,13 +16,6 @@ class DefaultRenderer extends Highway.Renderer {
     onEnterCompleted() {
         // const $view = document.querySelector('[data-router-view]:last-of-type')
         this.destroyOnLeave = []
-
-        this.Lazyloading = new Lazyloading({
-            load_delay: 10,
-            elements_selector: 'img, .lazy',
-            use_native: false,
-        })
-
         new InfiniteLoading()
     }
 }

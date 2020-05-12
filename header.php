@@ -10,5 +10,5 @@
     </script>
 </head>
 <body <?php body_class() ?>>
-<?php \Lisonsjeunesse\Core\Utils\Template::partial('navbar'); ?>
+<?= \Lisonsjeunesse\Core\Utils\Template::partial('navbar'); ?>
 <main data-router-wrapper>

@@ -1,12 +1,23 @@
 export const post = ({ url, params }) => {
     const http = new XMLHttpRequest()
     http.open('POST', url)
-    http.setRequestHeader('content-type', 'application/json')
+    // http.setRequestHeader('content-type', "application/x-www-form-urlencoded; charset=utf-8")
 
-    return new window.Promise((resolve) => {
-        const status = http.status
-        http.onload = () => resolve({ status, data: http.responseText })
-        http.onerror = () => Error({ status, data: http.statusText })
+    const req = new window.Promise((resolve) => {
+        http.onload = () =>
+            resolve({
+                status: http.status,
+                statusText: http.statusText,
+                data: http.responseText,
+            })
+        http.onerror = () =>
+            Error({
+                status: http.status,
+                statusText: http.statusText,
+                data: http.statusText,
+            })
         http.send(params)
     })
+
+    return req
 }

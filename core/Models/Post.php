@@ -99,6 +99,7 @@ class Post {
             $temp = new \stdClass();
             $temp->id = $id;
             $temp->title = $p->post_title;
+
             $temp->content = apply_filters('the_content', $p->post_content);
             $temp->content = Text::formatWpContent($temp->content);
             $temp->excerpt = Text::getExcerpt($temp->content);

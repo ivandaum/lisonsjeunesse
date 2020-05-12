@@ -17,7 +17,7 @@
                 <?php endif; ?>
             </a>
             <div class="Featured__tools is-flex is-justified is-margin-top-2 is-margin-top-2-touch">
-                <?php Template::component('button/add-librairy', array('id' => $post->id, 'active' => $post->isLiked)); ?>
+                <?= Template::component('button/add-librairy', array('id' => $post->id, 'active' => $post->isLiked)); ?>
                 <span class="is-flex is-center no-shrink"><?= Svg::print('clock'); ?><?= $post->readTime ?> min</span>
             </div>
         </div>

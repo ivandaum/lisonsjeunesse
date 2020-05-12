@@ -1,5 +1,9 @@
 <?php use \Lisonsjeunesse\Core\Utils\Svg; ?>
-<div class="SearchForm has-width-100  <?php if(isset($noIcon) && $noIcon): ?>no-icon<?php endif; ?>">
+<div 
+    class="SearchForm has-width-100
+    <?php if(isset($noIcon) && $noIcon): ?> no-icon <?php endif; ?>
+    <?php if(isset($greige) && $greige): ?>greige<?php endif; ?>"
+>
     <form action="/" class="is-relative">
         <?php if(!isset($noIcon) || isset($noIcon) && $noIcon == false): ?>
         <span class="SearchForm__svg is-block is-absolute has-height-100"><?= Svg::print('search') ?></span>

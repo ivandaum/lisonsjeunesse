@@ -4,8 +4,6 @@
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/config/config.php');
 
-new Lisonsjeunesse\Core\Ajax();
-
 add_theme_support( 'post-thumbnails' );
 
 register_nav_menus([
@@ -67,3 +65,5 @@ add_action('get_header', 'remove_admin_login_header');
 function remove_admin_login_header() {
 	remove_action('wp_head', '_admin_bar_bump_cb');
 }
+
+new Lisonsjeunesse\Core\Ajax();

@@ -31,7 +31,7 @@
                 </div>
                 
                 <div class="Single__footer is-flex is-justified">
-                    <?php Template::component('button/add-librairy', array('id' => $single->id, 'active' => $single->isLiked)); ?>
+                    <?= Template::component('button/add-librairy', array('id' => $single->id, 'active' => $single->isLiked)); ?>
                     <span class="no-shrink"><?= $single->date ?> par <a href="<?= $single->author->url ?>"><?= $single->author->name ?></a></span>
                 </div>
 
@@ -56,7 +56,7 @@
         <div class="Single__relatedPosts has-background-white">
             <div class="container">
                 <h2 class="is-secondary-title is-flex is-center-y has-font-serif">À lire aussi</h2>
-                <?php Template::layout('posts', array('noPagination' => true, 'posts' => $single->posts)); ?>
+                <?= Template::layout('posts', array('noPagination' => true, 'posts' => $single->posts)); ?>
             </div>
         </div>
     </article>

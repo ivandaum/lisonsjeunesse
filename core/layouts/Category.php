@@ -10,6 +10,11 @@ class Category {
 
         $data = Taxonomy::format( array($category) )[0];
 
+        $this->page = get_query_var('paged');
+        if ($this->page === 0) {
+            $this->page = 1;
+        }
+
         foreach($data as $name => $value) {
             $this->{$name} = $value;
         }
@@ -22,5 +27,14 @@ class Category {
         } else {
             $this->subCategories = Taxonomy::findByParent($this->id);
         }
+    }
+    
+    public function getAjaxParams() {
+        $params = array(
+            'cat' => $this->id,
+            'page' => $this->page + 1
+        );
+
+        return json_encode($params);
     }
 }

@@ -27,5 +27,5 @@
     </p>
     <p class="PostPreview__excerpt"><?= $post->excerpt ?></p>
 
-    <?php Template::component('button/add-librairy', array('id' => $post->id, 'active' => $post->isLiked)); ?>
+    <?= Template::component('button/add-librairy', array('id' => $post->id, 'active' => $post->isLiked)); ?>
 </div>

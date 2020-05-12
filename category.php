@@ -7,7 +7,7 @@
     if ($category->haveMainCategory) {
         $file = 'category-' . $category->mainCategory->slug;
         if (Template::exists($file)) {
-            Template::file($file, array('category' => $category));
+            echo Template::file($file, array('category' => $category));
             die;
         }
     }
@@ -19,8 +19,8 @@
         <h1 class="is-title is-center is-flex has-font-serif "><?= $category->name ?></h1>
         <div class="has-background-white">
             <div class="container">
-                <?php Template::layout('filters', array('categories' => $category->subCategories)); ?>  
-                <?php Template::layout('posts', array('posts' => $category->posts)); ?>
+                <?= Template::layout('filters', array('categories' => $category->subCategories)); ?>  
+                <?= Template::layout('posts', array('posts' => $category->posts, 'ajax' => $category->getAjaxParams())); ?>
             </div>
         </div>
     </article>

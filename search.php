@@ -7,7 +7,7 @@
 ?>
     <article class="Search" data-router-view="search">
         <div class="container">
-            <h1 class="is-title is-center is-flex has-font-serif">Rechercher</h1>
+            <h1 class="is-title is-center is-flex has-font-serif">Recherche</h1>
             <div class="is-margin-top-2 is-margin-bottom-5 is-margin-bottom-5-touch">
                 <?= Template::component('search', array('value' => $search->value)); ?>
             </div>
@@ -15,7 +15,7 @@
 
         <div class="has-background-white">
             <div class="container is-padding-top-4 is-padding-top-4-touch">
-                <?php Template::layout('posts', array('posts' => $search->posts, 'noPagination' => true)); ?>
+                <?= Template::layout('posts', array('posts' => $search->posts, 'noPagination' => true)); ?>
             </div>
         </div>
     </article>
