@@ -74,7 +74,6 @@
     }
 }
 
-
 .cross {
     height: 1em;
     width: 1em;
@@ -82,7 +81,7 @@
 
     &::before,
     &::after {
-        content:"";
+        content: '';
         background: $black;
         height: 0.1rem;
         width: 100%;
@@ -97,5 +96,38 @@
 
     &::after {
         transform: rotate(-45deg);
+    }
+}
+
+.arrow {
+    height: 1em;
+    width: 1em;
+    position: relative;
+    border-radius: 50%;
+    border: 0.1rem solid $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        height: 0.1rem;
+        background: $black;
+        width: 25%;
+        transform-origin: right center;
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
+
+    &.left {
+        transform: scaleX(-1);
     }
 }

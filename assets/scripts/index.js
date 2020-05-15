@@ -5,6 +5,7 @@ import Highway from '@dogstudio/highway'
 // import store from './utils/store';
 import DefaultRenderer from './renderer/DefaultRenderer'
 import HomeRenderer from './renderer/HomeRenderer'
+import AboutRenderer from './renderer/AboutRenderer'
 import DefaultTransition from './transitions/DefaultTransition'
 import MyLibrairy from './tools/MyLibrairy'
 import Navbar from './tools/Navbar'
@@ -26,6 +27,7 @@ const core = new Highway.Core({
         page: DefaultRenderer,
         search: DefaultRenderer,
         home: HomeRenderer,
+        about: AboutRenderer,
     },
     transitions: {
         home: DefaultTransition,

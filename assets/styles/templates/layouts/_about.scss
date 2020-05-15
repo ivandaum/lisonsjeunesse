@@ -9,13 +9,53 @@
         justify-content: flex-end;
     }
 
+    &__team {
+        align-items: flex-end;
+    }
+
+    &__arrow {
+        font-size: 5rem;
+        width: 100%;
+        z-index: map-get($zindex, above-section2);
+
+        button {
+            margin-left: 1rem;
+            @include touch {
+                margin-left: 2rem;
+            }
+        }
+
+        @include touch {
+            top: 42rem;
+        }
+
+        @include desktop {
+            margin-right: 50%;
+            margin-left: 5rem;
+            width: 36rem;
+        }
+    }
+
     &__people {
         align-items: flex-end;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: map-get($zindex, section);
+        pointer-events: none;
+
+        &.is-active {
+            pointer-events: auto;
+            position: relative;
+            z-index: map-get($zindex, above-section);
+            animation: team-in 1s $bezier;
+        }
 
         &--image {
             width: 100%;
             background: $grey;
             overflow: hidden;
+            height: 40rem;
 
             @include desktop {
                 width: 36rem;
@@ -26,12 +66,18 @@
         &--text {
             font-size: 1.5rem;
             line-height: 1.5em;
-
             @include desktop {
                 font-size: 2rem;
                 margin-left: -5rem;
                 padding-left: 12rem;
             }
+        }
+
+        &--text,
+        &--image {
+            opacity: 0;
+            transform: translateX(-2rem);
+            transition: opacity $speed $bezier, transform $speed $bezier;
         }
 
         &--text::before {
@@ -67,6 +113,24 @@
             @include touch {
                 padding-left: 3rem;
             }
+        }
+    }
+
+    &__people.is-active {
+        .About__people--text,
+        .About__people--image {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .About__people--text {
+            transition: opacity $speed $speed $bezier,
+                transform $speed $speed $bezier;
+        }
+
+        .About__people--image {
+            transition: opacity $speed $speed * 0.5 $bezier,
+                transform $speed $speed * 0.5 $bezier;
         }
     }
 }
