@@ -1,6 +1,10 @@
 .About {
     padding-top: 26rem;
 
+    @include touch {
+        padding-top: 16rem;
+    }
+
     &__description {
         justify-content: flex-end;
     }
@@ -9,17 +13,25 @@
         align-items: flex-end;
 
         &--image {
-            width: 36rem;
-            height: 48rem;
-            overflow: hidden;
+            width: 100%;
             background: $grey;
+            overflow: hidden;
+
+            @include desktop {
+                width: 36rem;
+                height: 48rem;
+            }
         }
 
         &--text {
-            padding-left: 12rem;
-            font-size: 2rem;
+            font-size: 1.5rem;
             line-height: 1.5em;
-            margin-left: -5rem;
+
+            @include desktop {
+                font-size: 2rem;
+                margin-left: -5rem;
+                padding-left: 12rem;
+            }
         }
 
         &--text::before {
@@ -30,6 +42,11 @@
             position: absolute;
             top: 1em;
             left: 0;
+
+            @include touch {
+                left: -8rem;
+                top: 0.6em;
+            }
         }
 
         picture,
@@ -39,8 +56,17 @@
             @include object-fit;
         }
 
+        picture {
+            @include touch {
+                position: relative;
+            }
+        }
+
         h3 {
             font-size: 2em;
+            @include touch {
+                padding-left: 3rem;
+            }
         }
     }
 }
