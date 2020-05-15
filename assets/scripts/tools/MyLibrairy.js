@@ -40,9 +40,6 @@ export default class MyLibrairy {
         const numberNavbar = ids.length ? ids.length : ''
         this.$menuItem.innerHTML = numberNavbar
 
-        const url = this.$link.href.split('?t')
-        this.$link.href = url[0] + '?t=' + Date.now()
-
         Cookies.set(COOKIE_NAME, ids)
     }
 }

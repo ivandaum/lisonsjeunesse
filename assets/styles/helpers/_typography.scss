@@ -78,25 +78,25 @@
         font-size: 1.6rem;
         line-height: 2.5rem;
         margin-bottom: 1em;
+    }
 
-        &.has-small-font-size {
-            font-size: 1.4rem;
-            line-height: 1.3em;
+    p.has-small-font-size {
+        font-size: 1.4rem;
+        line-height: 1.3em;
+    }
+
+    &:not(.no-first-p) p.first-of-content {
+        font-size: 3rem;
+        line-height: 1.5em;
+        margin-bottom: 5rem;
+
+        em {
+            font-style: normal;
         }
 
-        &.first-of-content {
-            font-size: 3rem;
-            line-height: 1.5em;
-            margin-bottom: 5rem;
-
-            em {
-                font-style: normal;
-            }
-
-            @include touch {
-                font-size: 2rem;
-                margin-bottom: 3rem;
-            }
+        @include touch {
+            font-size: 2rem;
+            margin-bottom: 3rem;
         }
     }
 

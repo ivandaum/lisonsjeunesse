@@ -19,7 +19,7 @@
     <ul class="Navbar__links is-flex no-shrink">
         <?php foreach($menu as $item): ?>
             <li class="Navbar__item Navbar__item--main is-relative no-shrink">
-                <a class="is-center is-flex js-<?= $item->slug ?>" href="<?= $item->url ?><?php if($item->slug === TaxonomyConstants::librairy): ?>?t<?php endif; ?>">
+                <a class="is-center is-flex js-<?= $item->slug ?>" href="<?= $item->url ?>">
                 <?= $item->title ?>
                 <?php if( $item->slug === TaxonomyConstants::librairy): ?>
                     <span class="Navbar__librairy-pins js-librairy-pins">
@@ -53,6 +53,6 @@
 <div class="Navbar__search-overlay js-nav-search is-absolute has-background-white has-width-100 is-padding-top-3 is-padding-bottom-2 is-padding-top-2-touch is-padding-bottom-2-touch">
     <div class="container is-flex is-center">
         <?= Template::component('search', array('noIcon' => true, 'greige' => true)); ?>
-        <button class="Navbar__search-close js-close-search has-height-100 is-block">&times;</button>
+        <button class="Navbar__search-close js-close-search no-shrink is-block cross"></button>
     </div>
 </div>

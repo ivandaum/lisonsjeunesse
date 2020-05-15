@@ -73,3 +73,29 @@
         fill: $grey;
     }
 }
+
+
+.cross {
+    height: 1em;
+    width: 1em;
+    position: relative;
+
+    &::before,
+    &::after {
+        content:"";
+        background: $black;
+        height: 0.1rem;
+        width: 100%;
+        display: block;
+        position: absolute;
+        transform-origin: center center;
+    }
+
+    &::before {
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        transform: rotate(-45deg);
+    }
+}
