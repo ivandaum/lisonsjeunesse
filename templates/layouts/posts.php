@@ -30,7 +30,7 @@
 <?php if(count($posts) && !wp_doing_ajax()): ?>
     <?php if (!isset($noPagination) || $noPagination === false): ?>
     <div class="is-flex is-center has-width-100">
-        <a class="button button--loading is-flex is-center js-detach-core js-infinite-load-btn" data-ajax='<?php if(isset($ajax)): echo $ajax; else: echo "{}"; endif; ?>' href="<?= Pagination::getNextPage() ?>"><span>Charger plus d'articles</span></a>
+        <a class="button button--loading is-flex is-center js-detach-core js-infinite-load-btn" data-ajax='<?php if(isset($ajax)): echo json_encode($ajax); else: echo "{}"; endif; ?>' href="<?= Pagination::getNextPage() ?>"><span>Charger plus d'articles</span></a>
     </div>
     <?php endif; ?>
 <?php endif; ?>

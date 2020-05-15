@@ -47,7 +47,7 @@
 
     &.is-hover &__category {
         color: $white;
-        transform: translateX(-75%);
+        // transform: translateX(-33vw);
         z-index: map-get($zindex, under-section);
     }
 

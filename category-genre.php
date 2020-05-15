@@ -2,20 +2,33 @@
     use \Lisonsjeunesse\Core\Utils\Template;
     use \Lisonsjeunesse\Core\Layouts\Category;
 
-    $category = new Category();
+    // $count = get_option('posts_per_page');
+    // $count = $count ? $count + 1 : null;
+
+    $count = get_option('posts_per_page') + 1;
+    $category = new Category($count);
+
+    $ajax = array_merge($category->getAjaxParams(), array('offset' => 1));
+    $featured = $category->posts[0];
+    unset($category->posts[0]);
+
     get_header(); 
 ?>
 <article class="Category is-main-category Category--greige" data-router-view="category">
     <div class="Category__header">
         <div class="container">
-            <h1 class="is-title has-font-serif" hidden>Découvrir par <span class="is-lowercase"><?= $category->mainCategory->name ?></span></h1>
-            <?= Template::layout('post/featured', array('post' => $category->firstPost, 'isHover' => true)); ?>
+            <?php if(!$category->hasParent): ?>
+                <h1 hidden>Découvrir par genre</h1>
+            <?php else: ?>
+                <h1 hidden>Découvrir par <?=strtolower($featured->mainCategory->name) ?></h1>
+            <?php endif; ?>
+            <?= Template::layout('post/featured', array('post' => $featured, 'isHover' => true)); ?>
         </div>
     </div>
 
     <div class="has-background-white">
         <div class="container">
-            <?= Template::layout('posts', array('posts' => $category->posts, 'ajax' => $category->getAjaxParams())); ?>
+            <?= Template::layout('posts', array('posts' => $category->posts, 'ajax' => $ajax)); ?>
         </div>
     </div>
 </article>

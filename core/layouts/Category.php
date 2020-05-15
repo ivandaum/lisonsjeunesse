@@ -5,7 +5,7 @@ use \Lisonsjeunesse\Core\Models\Post;
 use \Lisonsjeunesse\Core\Models\Taxonomy;
 
 class Category {
-    public function __construct() {
+    public function __construct($count = 0, $offset = 0) {
         $category = get_queried_object();
 
         $data = Taxonomy::format( array($category) )[0];
@@ -15,12 +15,14 @@ class Category {
             $this->page = 1;
         }
 
+        $this->count = $count;
+        $this->offset = $offset;
+
         foreach($data as $name => $value) {
             $this->{$name} = $value;
         }
 
-        $this->posts = Post::findByCategory($this->id, 0, get_query_var('paged'));
-        $this->firstPost = $this->posts[0];
+        $this->posts = Post::findByCategory($this->id, $this->count, $this->page, $this->offset);
 
         if ($this->hasParent) {
             $this->subCategories = Taxonomy::findByParent($this->parent->id);
@@ -35,6 +37,6 @@ class Category {
             'page' => $this->page + 1
         );
 
-        return json_encode($params);
+        return $params;
     }
 }

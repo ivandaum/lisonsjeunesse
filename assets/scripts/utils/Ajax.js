@@ -1,7 +1,6 @@
 export const post = ({ url, params }) => {
     const http = new XMLHttpRequest()
     http.open('POST', url)
-    // http.setRequestHeader('content-type', "application/x-www-form-urlencoded; charset=utf-8")
 
     const req = new window.Promise((resolve) => {
         http.onload = () =>
