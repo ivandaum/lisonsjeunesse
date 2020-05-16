@@ -68,6 +68,8 @@
 
     button svg {
         margin-right: 0;
+        height: 100%;
+
         @include touch {
             width: 3.5rem;
             height: 1.5rem;
