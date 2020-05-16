@@ -13,6 +13,7 @@
 
     @include touch {
         margin-top: 3.5rem;
+        font-size: 2rem;
     }
 
     &__logo {
@@ -24,9 +25,28 @@
         }
     }
 
+    &__phoneBtn,
+    &__logo {
+        // mix-blend-mode: difference;
+    }
+
+    &__phoneBtn {
+        z-index: map-get($zindex, above-all);
+        top: $mobile-padding;
+        right: $mobile-padding;
+    }
+
     &__links {
         @include touch {
+            position: fixed;
+            height: 100vh;
+            width: 100vw;
             display: none;
+            top: 0;
+            left: 0;
+            background: $white;
+            overflow-y: scroll;
+            padding: #{$mobile-padding * 2} $mobile-padding;
         }
     }
 
@@ -37,10 +57,21 @@
         width: 100%;
         border: 0.1rem solid transparent;
         cursor: pointer;
+
+        @include touch {
+            font-weight: bold;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 1rem 0;
+        }
     }
 
     button svg {
         margin-right: 0;
+        @include touch {
+            width: 3.5rem;
+            height: 1.5rem;
+        }
     }
 
     &__links > li:hover {
@@ -62,10 +93,28 @@
         background: $white;
         right: 0;
         width: 100%;
-        border: 0.1rem solid $greige;
+
+        @include desktop {
+            border: 0.1rem solid $greige;
+        }
+
+        @include touch {
+            display: block;
+            position: relative;
+            padding: 0 0 0 2rem;
+            border-left: 0.1rem solid $black;
+        }
 
         li {
             padding: 1rem 0;
+            @include touch {
+                padding: 0;
+            }
+
+            a,
+            button {
+                font-weight: 400;
+            }
         }
 
         li:hover {
@@ -81,6 +130,21 @@
         color: $black;
         font-size: 0.8em;
         text-align: left;
+
+        @include touch {
+            position: relative;
+            right: auto;
+            top: 0;
+            font-size: 1em;
+            margin-left: 0.5rem;
+
+            &::before {
+                content: '(';
+            }
+            &::after {
+                content: ')';
+            }
+        }
     }
 
     &__search-overlay {
@@ -104,4 +168,8 @@
 
 body.is-search .Navbar__search-overlay {
     transform: translateY(0);
+}
+
+body.is-menu .Navbar__links {
+    display: block;
 }

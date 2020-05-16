@@ -16,7 +16,7 @@ get_header(); ?>
                 <?= Image::create($post->previewImage); ?>
                 <?php endif; ?>
                 <?php if($post->mainCategory): ?>
-                <p class="Home__category is-absolute has-font-serif has-text-center has-width-100">
+                <p class="Home__category is-absolute has-font-serif has-text-center has-width-100 is-margin-top-2-touch">
                     <?= $post->mainCategory->name ?>
                 </p>
                 <?php endif; ?>

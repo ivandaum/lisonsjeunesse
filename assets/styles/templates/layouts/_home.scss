@@ -7,7 +7,10 @@
         width: 100%;
         overflow: hidden;
         z-index: map-get($zindex, section);
-        padding-left: 25vw;
+
+        @include desktop {
+            padding-left: 25vw;
+        }
 
         @include touch {
             overflow-x: scroll;
@@ -17,12 +20,27 @@
     &__post {
         width: 50vw;
         height: 60vh;
+
+        @include touch {
+            width: 100vw;
+        }
     }
 
     &__category {
         font-size: 8rem;
         max-width: 80%;
         z-index: map-get($zindex, above-section);
+
+        @include touch {
+            font-size: 4rem;
+            position: relative;
+        }
+    }
+
+    &__image {
+        @include touch {
+            flex-direction: column;
+        }
     }
 
     picture {
@@ -34,10 +52,19 @@
         width: auto;
         max-width: 30vw;
         max-height: 50vh;
+
+        @include touch {
+            max-width: 80vw;
+            max-height: 40vh;
+        }
     }
 
     img:not(.loaded) {
         width: 25vw;
         height: 50vh;
+
+        @include touch {
+            width: 60vw;
+        }
     }
 }

@@ -25,8 +25,10 @@ class HomeRenderer extends Highway.Renderer {
 
         this.onResize()
 
-        window.addEventListener('wheel', this.onScroll.bind(this))
-        RafManager.addQueue(this.render.bind(this))
+        if (this.windowWidth > 1000) {
+            window.addEventListener('wheel', this.onScroll.bind(this))
+            RafManager.addQueue(this.render.bind(this))
+        }
     }
     onResize() {
         this.windowWidth = window.innerWidth
