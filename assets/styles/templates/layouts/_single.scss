@@ -182,6 +182,8 @@
     }
 
     .LastPosts .is-column {
-        margin-bottom: 10rem;
+        @include desktop {
+            margin-bottom: 10rem;
+        }
     }
 }
