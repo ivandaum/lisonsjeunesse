@@ -46,7 +46,7 @@
                         <?php endforeach; ?>
                     </ul>
                     <div class="Single__comments--form is-margin-top-3">
-                        <p class="is-margin-bottom-3"><strong>Rédiger un commentaire</strong></p>
+                        <p class="is-margin-bottom-3 is-margin-top-3-touch"><strong>Rédiger un commentaire</strong></p>
                         <?php comment_form(array(), $single->id); ?>
                     </div>
                 </div>
