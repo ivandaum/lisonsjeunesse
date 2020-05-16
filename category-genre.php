@@ -2,9 +2,6 @@
     use \Lisonsjeunesse\Core\Utils\Template;
     use \Lisonsjeunesse\Core\Layouts\Category;
 
-    // $count = get_option('posts_per_page');
-    // $count = $count ? $count + 1 : null;
-
     $count = get_option('posts_per_page') + 1;
     $category = new Category($count);
 

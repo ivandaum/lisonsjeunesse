@@ -11,8 +11,10 @@ class Home {
         $this->mainCategory = Taxonomy::findBySlug( TaxonomyConstants::genre );
         $this->categories = Taxonomy::findByParent($this->mainCategory->id);
         $this->posts = array();
+
         $posts = array();
         $ids = array();
+
         foreach($this->categories as $k => $category) {
             $this->posts[] = Post::findByCategory($category->id, 1, 1, 0, $ids)[0];
             $ids[] = $this->posts[$k]->id;
