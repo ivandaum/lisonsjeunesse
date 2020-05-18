@@ -2,6 +2,35 @@
     height: 100vh;
     background: $greige;
 
+    &__slider-indicator {
+        bottom: 10vh;
+        max-width: map-get($breakpoints, widescreen);
+
+        @include touch {
+            bottom: 3.5rem;
+        }
+    }
+
+    &__indicator {
+        height: 0.1rem;
+        background: $black;
+        width: 4rem;
+        margin-left: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before {
+            content: '';
+            height: 0.7rem;
+            width: 0.7rem;
+            border-radius: 50%;
+            background: $greige;
+            border: 0.1rem solid $black;
+            position: absolute;
+        }
+    }
+
     &__slider {
         height: 100%;
         width: 100%;
@@ -20,6 +49,7 @@
     &__post {
         width: 50vw;
         height: 60vh;
+        z-index: map-get($zindex, section);
 
         @include touch {
             width: 100vw;
@@ -28,8 +58,20 @@
 
     &__category {
         font-size: 8rem;
-        max-width: 80%;
         z-index: map-get($zindex, above-section);
+        pointer-events: none;
+
+        span {
+            display: block;
+            height: 1.2em;
+            overflow: hidden;
+            margin-right: 0.25em;
+            transition-property: padding;
+            transition-timing-function: $bezier;
+            transition-delay: $speed;
+            transition-duration: $speed * 3;
+            position: relative;
+        }
 
         @include touch {
             font-size: 4rem;
@@ -37,14 +79,46 @@
         }
     }
 
-    &__image {
+    &__category--white {
+        color: $white;
+        z-index: map-get($zindex, base);
+        transform: translateX(-50%);
+
         @include touch {
-            flex-direction: column;
+            display: none;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            background: $white;
+            height: 0.1rem;
+            opacity: 1;
+            margin-right: 100%;
+            transition: width $speed * 3 $bezier;
+        }
+
+        span {
+            padding-top: 1.2em;
+            position: relative;
+            transition-delay: 0s;
+        }
+    }
+
+    &__image {
+        z-index: map-get($zindex, section);
+        @include touch {
+            flex-wrap: wrap;
         }
     }
 
     picture {
         padding-top: 0 !important;
+        transition: transform $speed * 2 $bezier, opacity $speed * 2 $bezier;
+        box-shadow: 0 0 5rem rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: map-get($zindex, section);
     }
 
     img {
@@ -54,7 +128,7 @@
         max-height: 50vh;
 
         @include touch {
-            max-width: 80vw;
+            max-width: 70vw;
             max-height: 40vh;
         }
     }
@@ -66,5 +140,38 @@
         @include touch {
             width: 60vw;
         }
+    }
+
+    .Home__post.is-active:hover {
+        picture {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.Home__slider.is-hover,
+.Home__slider.is-scrolling {
+    .Home__category span {
+        transition-delay: 0s;
+        padding-top: 1.2em;
+    }
+}
+
+.Home__post.is-active:hover .Home__category span {
+    transition-delay: $speed;
+}
+
+.Home__slider.is-hover:not(.is-scrolling) .Home__post:not(.is-active) picture {
+    opacity: 0;
+}
+
+.Home__post.is-active:hover .Home__category--white {
+    &::before {
+        width: 25vw;
+        transition-delay: $speed * 2;
+    }
+    span {
+        padding-top: 0;
+        background: $greige;
     }
 }

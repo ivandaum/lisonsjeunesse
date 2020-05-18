@@ -19,6 +19,16 @@ class Text {
         return "{}";
     }
 
+    public static function explodeToSpan(string $string) {
+        $s = explode(' ', $string);
+        $final = '';
+        for($i = 0; $i < count($s); $i++) {
+            $final .= '<span>' . $s[$i] . '</span>';
+        }
+
+        return $final;
+    }
+
     public static function getExcerpt(string $string = null) {
         $excerpt = substr(wp_strip_all_tags($string), 0, 120) . '...';
         

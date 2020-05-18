@@ -12,7 +12,6 @@ class Home {
         $this->categories = Taxonomy::findByParent($this->mainCategory->id);
         $this->posts = array();
 
-        $posts = array();
         $ids = array();
 
         foreach($this->categories as $k => $category) {
