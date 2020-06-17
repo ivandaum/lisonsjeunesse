@@ -29,17 +29,6 @@ class Text {
         return $final;
     }
 
-    public static function getExcerpt(string $string = null) {
-        $excerpt = substr(wp_strip_all_tags($string), 0, 120) . '...';
-        
-        // preg_match('/<p (.*?)>(.*?)<\/p>/', $string, $paragraph);
-        // if ($paragraph[2]) {
-        //     $excerpt = wp_strip_all_tags($paragraph[2]);
-        // }
-
-        return str_replace('&nbsp;', '', $excerpt);
-    }
-
     public static function getFirstLetter(string $string = null) {
         $string = str_replace(array('«', '"'), '', $string);
         $string = preg_replace('/\s+/', '', $string);

@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="has-background-white">
+        <div class="has-background-white ">
             <div class="container is-padding-top-4 is-padding-top-4-touch">
                 <?= Template::layout('posts', array('posts' => $search->posts, 'noPagination' => true)); ?>
             </div>

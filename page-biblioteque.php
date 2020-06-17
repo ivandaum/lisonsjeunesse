@@ -7,7 +7,7 @@
     $page = new Librairy();
 ?>
     <article class="Librairy" data-router-view="page">
-        <header class="Librairy__header container">
+        <header class="Librairy__header container ">
             <h1 class="is-title is-center is-flex has-font-serif "><?= $page->title ?></h1>
             <p class="Librairy__subtitle has-font-serif is-relative is-padding-top-5-touch">
                 <span class="is-first-letter is-absolute">R</span>
@@ -15,7 +15,7 @@
             </p>
         </header>
 
-        <div class="Librairy__posts has-background-white">
+        <div class="Librairy__posts has-background-white ">
             <div class="container">
                 <?php if(count($page->posts)): ?>
                 <?= Template::layout('posts', array('posts' => $page->posts, 'noPagination' => true)); ?>

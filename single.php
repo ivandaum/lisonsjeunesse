@@ -10,7 +10,7 @@
     get_header(); 
 ?>
     <article class="Single" data-router-view="single">
-        <div class="container is-flex is-justified">
+        <div class="container  is-flex is-justified">
             <div class="Single__left is-column is-3 no-shrink is-relative ">
                 <?php if ($single->previewImage): ?>
                     <div class="Single__image is-relative is-block has-width-100 is-sticky">

@@ -37,10 +37,6 @@ const core = new Highway.Core({
 
 Nav.show()
 
-// NavbarBehavior.bind(document.querySelector('.js-navbar-btn'));
-// NavbarBehavior.bindClosers();
-// const navbarAnimation = NavbarBehavior.firstShow();
-
 function detachFromCore() {
     const $elements = document.querySelectorAll('.js-detach-core')
     core.detach($elements)

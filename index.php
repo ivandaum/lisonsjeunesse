@@ -14,7 +14,7 @@ get_header(); ?>
             <span class="is-hidden-touch">Scroll</span>
             <span class="Home__indicator"></span>
     </div>
-    <div class="Home__slider js-slider is-relative is-flex is-center-y no-shrink">
+    <div class="Home__slider js-slider is-relative is-flex is-center-y no-shrink ">
     <?php foreach($home->posts as $k => $post): ?>
         <div class="Home__post is-relative no-shrink is-flex is-center js-slider-item">
             <a href="<?= $post->link ?>" class="Home__image js-image has-height-100 has-width-100 is-flex is-center is-relative">

@@ -113,7 +113,7 @@ class Post {
 
             $temp->content = apply_filters('the_content', $p->post_content);
             $temp->content = Text::formatWpContent($temp->content);
-            $temp->excerpt = Text::getExcerpt($temp->content);
+            $temp->excerpt = get_the_excerpt($id);
             $temp->link = get_permalink($id);
             $temp->date = get_the_date('d/m/Y', $id);
             $temp->timestamp = strtotime(str_replace('/', '-', $temp->date));

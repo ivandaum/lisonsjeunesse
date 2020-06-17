@@ -31,6 +31,7 @@
         font-size: 12rem;
         z-index: map-get($zindex, above-section);
         transition: transform $speed * 2 $bezier, color $speed * 2 linear;
+        text-align: center;
 
         &::before {
             content: ' ';
@@ -47,7 +48,7 @@
 
     &.is-hover &__category {
         color: $white;
-        // transform: translateX(-33vw);
+        transform: translateX(-75%);
         z-index: map-get($zindex, under-section);
     }
 

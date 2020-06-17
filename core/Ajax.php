@@ -26,10 +26,9 @@ class Ajax {
         $posts = Post::findByCategory($cat, $count, $page, $offset);
 
         $html = Template::layout('posts', array('posts' => $posts, 'noPagination' => true));
-        $html = utf8_decode($html);
 
         $loadMore = count($posts) >= $count;
-        $this->toJson(array('loadMore' => $loadMore, 'success' => true, 'html' => utf8_encode($html))); 
+        $this->toJson(array('loadMore' => $loadMore, 'success' => true, 'html' => $html)); 
     }
 
     public function toJson($data) {

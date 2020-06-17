@@ -17,7 +17,7 @@
 ?>
     <article class="Category" data-router-view="category">
         <h1 class="is-title is-center is-flex has-font-serif "><?= $category->name ?></h1>
-        <div class="has-background-white">
+        <div class="has-background-white ">
             <div class="container">
                 <?= Template::layout('filters', array('categories' => $category->subCategories)); ?>  
                 <?= Template::layout('posts', array('posts' => $category->posts, 'ajax' => $category->getAjaxParams())); ?>

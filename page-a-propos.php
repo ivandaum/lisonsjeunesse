@@ -7,14 +7,14 @@
 get_header(); 
 ?>
     <article class="About" data-router-view="about">
-        <div class="container">
+        <div class="container ">
             <h1 hidden><?= $page->title ?></h1>
             <p class="Librairy__subtitle has-font-serif is-relative is-padding-top-5-touch">
                 <span class="is-first-letter is-absolute"><?= Text::getFirstLetter($about->introduction) ?></span>
                 <span class="is-relative"><?= $about->introduction ?></span>
             </p>
         </div>
-        <div class="has-background-white is-margin-top-5 is-margin-top-5-touch is-padding-top-5 is-padding-bottom-5 is-padding-top-5-touch is-padding-bottom-5-touch">
+        <div class="has-background-white  is-margin-top-5 is-margin-top-5-touch is-padding-top-5 is-padding-bottom-5 is-padding-top-5-touch is-padding-bottom-5-touch">
             <div class="container">
                 <div class="About__team is-relative js-slider is-center is-flex">
                     <?php if($about->team): ?>

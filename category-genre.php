@@ -13,7 +13,7 @@
 ?>
 <article class="Category is-main-category Category--greige" data-router-view="category">
     <div class="Category__header">
-        <div class="container">
+        <div class="container ">
             <?php if(!$category->hasParent): ?>
                 <h1 hidden>Découvrir par genre</h1>
             <?php else: ?>
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <div class="has-background-white">
+    <div class="has-background-white ">
         <div class="container">
             <?= Template::layout('posts', array('posts' => $category->posts, 'ajax' => $ajax)); ?>
         </div>
