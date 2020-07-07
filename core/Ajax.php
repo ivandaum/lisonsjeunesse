@@ -27,7 +27,11 @@ class Ajax {
 
         $html = Template::layout('posts', array('posts' => $posts, 'noPagination' => true));
 
-        $loadMore = count($posts) >= $count;
+        if(is_array($posts)) {
+            $loadMore = count($posts) >= $count;
+        } else {
+            $loadMore = false;
+        }
         $this->toJson(array('loadMore' => $loadMore, 'success' => true, 'html' => $html)); 
     }
 

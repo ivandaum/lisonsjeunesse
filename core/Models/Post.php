@@ -100,7 +100,7 @@ class Post {
 
     public static function format(array $ids) {
 
-        if (!count($ids)) {
+        if (!is_array($ids) || !count($ids)) {
             return array();
         }
 
@@ -127,7 +127,12 @@ class Post {
                 $temp->isLiked = in_array($id, $ids);
             }
 
-            $temp->readTime = round(count(explode(' ', strip_tags($temp->content))) / 200);
+            if( $temp->content) {
+                $temp->readTime = round(count(explode(' ', strip_tags($temp->content))) / 200);
+            } else {
+                $temp->readTime = 0;
+            }
+
             $author = new \stdClass();
             $author->url = get_author_posts_url($p->post_author);
             $author->name = get_userdata($p->post_author)->display_name;
