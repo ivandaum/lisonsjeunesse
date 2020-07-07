@@ -14,7 +14,7 @@
                     <a class="has-text-bold" href="<?= $item->url ?>"><?= $item->title ?></a>
                 </li>
 
-                <?php if(count($item->child)): ?>
+                <?php if($item->child): ?>
                 <?php foreach($item->child as $subitem): ?>
                     <li>
                         <a href="<?= $subitem->url ?>"><?= $subitem->title ?></a>

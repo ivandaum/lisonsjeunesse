@@ -17,7 +17,7 @@
 
         <div class="Librairy__posts has-background-white ">
             <div class="container">
-                <?php if(count($page->posts)): ?>
+                <?php if($page->posts): ?>
                 <?= Template::layout('posts', array('posts' => $page->posts, 'noPagination' => true)); ?>
                 <?php else: ?>
                     <p class="has-width-100 has-text-center Librairy__empty">
