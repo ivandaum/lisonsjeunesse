@@ -6,7 +6,7 @@ import anime from 'animejs'
 const CIRCLE_POSITIONS = [
     [-50, -50],
     [-10, -50],
-    [50, -50],
+    [40, -50],
     [50, 0],
     [50, 40],
     [-10, 40],
@@ -36,7 +36,7 @@ class HomeRenderer extends Highway.Renderer {
 
         this.onResize()
         this.$items[0].classList.add('is-active')
-        this.moveCircle(this.index)
+        this.moveCircle(this.index, true)
 
         if (this.windowWidth > 1000) {
             window.addEventListener('wheel', this.onScroll.bind(this))
@@ -59,22 +59,27 @@ class HomeRenderer extends Highway.Renderer {
         this.windowWidth = window.innerWidth
     }
 
-    moveCircle(index) {
+    moveCircle(index, jumpTo) {
         this.$circles.forEach((targets, i) => {
-            const dataPosition = parseInt(targets.dataset.indexpos)
+            const dataIndex = parseInt(targets.dataset.indexpos)
 
-            let posIndex = dataPosition + index
-
-            console.log(targets.dataset.indexpos)
-            if (posIndex > CIRCLE_POSITIONS.length) {
-                posIndex -= CIRCLE_POSITIONS.length
+            let ind = dataIndex + index
+            if (ind >= CIRCLE_POSITIONS.length) {
+                ind -= CIRCLE_POSITIONS.length
             }
 
-            const xyz = CIRCLE_POSITIONS[posIndex]
+            const xyz = CIRCLE_POSITIONS[ind]
+
+            const divs = targets.querySelectorAll(`div`)
+            divs.forEach((el, a) =>
+                a === this.index
+                    ? el.classList.add('is-active')
+                    : el.classList.remove('is-active'),
+            )
 
             anime({
                 targets,
-                duration: 1000,
+                duration: jumpTo ? 0 : 1500,
                 easing: 'easeInOutExpo',
                 translateX: xyz[0] + 'vw',
                 translateY: xyz[1] + 'vh',

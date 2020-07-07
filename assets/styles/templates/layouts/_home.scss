@@ -175,13 +175,11 @@
         overflow: hidden;
 
         &--entry {
-            height: 25vw;
-            width: 25vw;
             transform-origin: center center;
 
             &:nth-of-type(1) {
-                width: 35vw;
-                height: 35vw;
+                width: 45vw;
+                height: 45vw;
             }
 
             &:nth-of-type(2) {
@@ -199,6 +197,14 @@
             top: 0;
             left: 0;
             border-radius: 50%;
+            z-index: map-get($zindex, base);
+            opacity: 0;
+            transition: opacity $speed * 3 $bezier;
+
+            &.is-active {
+                z-index: map-get($zindex, above-base);
+                opacity: 1;
+            }
         }
     }
 
