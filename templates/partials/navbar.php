@@ -31,7 +31,7 @@
                 <?php endif; ?>
                 </a>
 
-                <?php if(count($item->child)): ?>
+                <?php if($item->child): ?>
                     <ul class="Navbar__sublinks is-absolute is-margin-bottom-2-touch">
                     <?php foreach($item->child as $subitem): ?>
                         <li class="Navbar__item">
