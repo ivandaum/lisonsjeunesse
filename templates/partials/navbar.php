@@ -9,7 +9,7 @@
     $librairyCount = 0;
     if(isset($_COOKIE['librairy'])) {
         $ids = json_decode(str_replace('\"','"', $_COOKIE['librairy']));
-        $librairyCount = count($ids);
+        $librairyCount = is_array($ids) ? count($ids) : 0;
     }
 ?>
 <nav class="Navbar is-flex is-absolute is-justified js-nav">
