@@ -26,6 +26,11 @@ get_header(); ?>
                     <?= Text::explodeToSpan($post->mainCategory->name) ?>
                 </p>
                 <?php endif; ?>
+
+                <div class="Home__content is-column is-hidden-touch is-5 is-margin-bottom-4 is-margin-top-2-touch is-absolute">
+                    <h2 class="is-secondary-title has-font-serif"><?= $post->title ?></h2>
+                    <p class="is-margin-top-1 is-margin-top-2-touch"><?= $post->excerpt ?></p>
+                </div>
             </a>
             <?php if($post->mainCategory): ?>
                 <p class="Home__category Home__category--white is-absolute has-font-serif has-text-center has-width-100 is-flex is-wrap is-center">

@@ -82,10 +82,7 @@
             height: 1.2em;
             overflow: hidden;
             margin-right: 0.25em;
-            transition-property: padding;
-            transition-timing-function: $bezier;
-            transition-delay: $speed;
-            transition-duration: $speed * 3;
+            transition: padding $speed * 2 $bezier;
             position: relative;
         }
 
@@ -98,27 +95,30 @@
     &__category--white {
         color: $white;
         z-index: map-get($zindex, base);
-        transform: translateX(-50%);
+        transform: translateX(-35%);
 
         @include touch {
             display: none;
         }
 
-        &::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            background: $white;
-            height: 0.1rem;
-            opacity: 1;
-            margin-right: 100%;
-            transition: width $speed * 3 $bezier;
-        }
-
         span {
             padding-top: 1.2em;
-            position: relative;
-            transition-delay: 0s;
+        }
+
+        &::before {
+            content: ' ';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100%;
+            height: 0.2rem;
+            background: $white;
+            left: -100%;
+            transition: transform $speed * 2.5 $bezier,
+                opacity $speed * 2 $bezier;
+            transform: translateY(1.2em);
+            opacity: 0;
         }
     }
 
@@ -131,14 +131,14 @@
 
         picture {
             padding-top: 0 !important;
-            transition: transform $speed * 2 $bezier, opacity $speed * 2 $bezier;
             box-shadow: 0 0 5rem rgba(0, 0, 0, 0.2);
             z-index: map-get($zindex, section);
             position: absolute;
+            transition: clip-path $speed * 3 $bezier $speed * 2,
+                transform $speed * 2 $bezier;
 
             @include desktop {
                 clip-path: inset(100% 0 0 0);
-                transition: clip-path $speed * 3 $bezier;
             }
         }
 
@@ -147,9 +147,10 @@
             width: auto;
             max-width: 30vw;
             max-height: 50vh;
+
             @include desktop {
                 transition: transform $speed * 4 $bezier;
-                transform: scale3d(1.5, 1.5, 1);
+                transform: scale3d(2, 2, 1);
             }
 
             @include touch {
@@ -166,6 +167,15 @@
                 width: 60vw;
             }
         }
+    }
+
+    &__content {
+        right: -25%;
+        bottom: -25%;
+        opacity: 0;
+        z-index: map-get($zindex, above-section);
+        transform: translate3d(0, 2em, 0);
+        transition: transform $speed * 2.5 $bezier, opacity $speed * 2.5 $bezier;
     }
 
     &__circle {
@@ -207,11 +217,38 @@
             }
         }
     }
+}
 
-    .Home__post.is-active &__image picture {
-        clip-path: inset(0 0 0 0);
-        img {
-            transform: scale3d(1, 1, 1);
-        }
+.Home__slider:not(.is-scrolling) .Home__post.is-active:hover {
+    .Home__category--white span {
+        padding-top: 0;
+    }
+
+    .Home__category--white::before {
+        transform: translateY(0em);
+        opacity: 1;
+    }
+
+    .Home__image picture {
+        transform: scale(1.2);
+    }
+
+    .Home__content {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.Home__post.is-active .Home__image picture {
+    clip-path: inset(0 0 0 0);
+
+    img {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.Home__slider.is-hover .Home__post .Home__category:not(.Home__category--white) {
+    span {
+        padding-top: 1.2em !important;
     }
 }

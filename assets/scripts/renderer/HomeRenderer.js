@@ -9,7 +9,7 @@ const CIRCLE_POSITIONS = [
     [40, -50],
     [50, 0],
     [50, 40],
-    [-10, 40],
+    [-10, 30],
     [-50, 40],
 ]
 
@@ -40,11 +40,13 @@ class HomeRenderer extends Highway.Renderer {
 
         if (this.windowWidth > 1000) {
             window.addEventListener('wheel', this.onScroll.bind(this))
-            this.$images.forEach((image) => {
-                image.addEventListener('mouseenter', () =>
-                    this.$slider.classList.add('is-hover'),
-                )
-                image.addEventListener('mouseleave', () =>
+            this.$images.forEach((img, i) => {
+                img.addEventListener('mouseenter', () => {
+                    if (this.$items[i].classList.contains('is-active')) {
+                        this.$slider.classList.add('is-hover')
+                    }
+                })
+                img.addEventListener('mouseleave', () =>
                     this.$slider.classList.remove('is-hover'),
                 )
             })
@@ -55,12 +57,13 @@ class HomeRenderer extends Highway.Renderer {
         this.index = this.index || 0
         this.scroll = 0
         this.canScroll = true
+        this.$slider.scrollTo(0, 0)
 
         this.windowWidth = window.innerWidth
     }
 
     moveCircle(index, jumpTo) {
-        this.$circles.forEach((targets, i) => {
+        this.$circles.forEach((targets) => {
             const dataIndex = parseInt(targets.dataset.indexpos)
 
             let ind = dataIndex + index
@@ -69,8 +72,8 @@ class HomeRenderer extends Highway.Renderer {
             }
 
             const xyz = CIRCLE_POSITIONS[ind]
-
             const divs = targets.querySelectorAll(`div`)
+
             divs.forEach((el, a) =>
                 a === this.index
                     ? el.classList.add('is-active')
@@ -93,8 +96,6 @@ class HomeRenderer extends Highway.Renderer {
             return false
         }
 
-        this.canScroll = false
-
         const event = normalizeWheel(e)
         const direction = event.pixelY > 0 ? 1 : -1
         const targets = { x: this.scroll }
@@ -104,7 +105,14 @@ class HomeRenderer extends Highway.Renderer {
             direction + this.index < this.$items.length
         ) {
             this.index += direction
+        } else {
+            return false
         }
+
+        this.$slider.classList.remove('is-hover')
+        this.$slider.classList.add('is-scrolling')
+
+        this.canScroll = false
 
         let x = 0
         this.$items.forEach((el, i) => {
@@ -120,6 +128,7 @@ class HomeRenderer extends Highway.Renderer {
         })
 
         this.moveCircle(this.index)
+
         anime({
             targets,
             x,
@@ -133,6 +142,8 @@ class HomeRenderer extends Highway.Renderer {
                 this.canScroll = true
             },
         })
+
+        setTimeout(() => this.$slider.classList.remove('is-scrolling'), 1000)
     }
 }
 
