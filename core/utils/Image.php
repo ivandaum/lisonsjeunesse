@@ -81,12 +81,14 @@ class Image {
         }
 
         $sizes = get_intermediate_image_sizes();
-        for ($i = 0; $i < count($sizes); $i += 1) {
-            $size = $sizes[$i];
-            $src = wp_get_attachment_image_src( $id, $size );
-            $image['sizes'][$size] = $src[0];
-            $image['sizes'][$size . '-width'] = $src[1];
-            $image['sizes'][$size . '-height'] = $src[2];
+        if(is_array($sizes)) {
+            for ($i = 0; $i < count($sizes); $i += 1) {
+                $size = $sizes[$i];
+                $src = wp_get_attachment_image_src( $id, $size );
+                $image['sizes'][$size] = $src[0];
+                $image['sizes'][$size . '-width'] = $src[1];
+                $image['sizes'][$size . '-height'] = $src[2];
+            }
         }
 
         return $image;

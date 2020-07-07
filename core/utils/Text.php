@@ -22,8 +22,12 @@ class Text {
     public static function explodeToSpan(string $string) {
         $s = explode(' ', $string);
         $final = '';
-        for($i = 0; $i < count($s); $i++) {
-            $final .= '<span>' . $s[$i] . '</span>';
+        if(is_array($s)) {
+            for($i = 0; $i < count($s); $i++) {
+                $final .= '<span>' . $s[$i] . '</span>';
+            }
+        } else {
+            $final = $string;
         }
 
         return $final;
