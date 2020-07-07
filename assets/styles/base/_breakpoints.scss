@@ -38,3 +38,14 @@
         @content;
     }
 }
+
+@mixin tablet {
+    @media all and (min-width: map-get($breakpoints, tablet)) {
+        @content;
+    }
+}
+@mixin widescreen {
+    @media all and (min-width: map-get($breakpoints, widescreen)) {
+        @content;
+    }
+}

@@ -439,3 +439,8 @@ body {
     background: $greige;
     font-family: $font-primary;
 }
+
+body.loading,
+body.loading * {
+    cursor: wait !important;
+}

@@ -31,7 +31,7 @@ const PageBehavior = {
                 easing,
                 opacity: [0, 1],
                 translateZ: 1,
-                translateX: [100, 0],
+                translateY: [100, 0],
                 delay: duration * 0.5,
             },
             {
@@ -40,7 +40,7 @@ const PageBehavior = {
                 easing,
                 opacity: [1, 0],
                 translateZ: 1,
-                translateX: [0, -100],
+                translateY: [0, -100],
             },
         ]
 

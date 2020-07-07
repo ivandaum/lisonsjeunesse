@@ -17,12 +17,12 @@ get_header(); ?>
     <div class="Home__slider js-slider is-relative is-flex is-center-y no-shrink ">
     <?php foreach($home->posts as $k => $post): ?>
         <div class="Home__post is-relative no-shrink is-flex is-center js-slider-item">
-            <a href="<?= $post->link ?>" class="Home__image js-image has-height-100 has-width-100 is-flex is-center is-relative">
+            <a href="<?= $post->link ?>" class="Home__image js-image has-height-100 has-width-100 is-flex is-center">
                 <?php if($post->previewImage): ?>
                 <?= Image::create($post->previewImage); ?>
                 <?php endif; ?>
                 <?php if($post->mainCategory): ?>
-                <p class="Home__category is-absolute has-font-serif has-text-center has-width-100 is-margin-top-2-touch is-flex is-wrap is-center">
+                <p class="Home__category has-font-serif has-text-center has-width-100 is-margin-top-2-touch is-flex is-wrap is-center">
                     <?= Text::explodeToSpan($post->mainCategory->name) ?>
                 </p>
                 <?php endif; ?>
@@ -34,6 +34,11 @@ get_header(); ?>
                 <?php endif; ?>
         </div>
     <?php endforeach; ?>
+        <div class="Home__last has-height-100 is-relative no-shrink is-flex is-center"></div>
     </div>
+
+    <?php foreach($home->posts as $k => $post): ?>
+        
+    <?php endforeach; ?>
 </article>
 <?php get_footer(); ?>

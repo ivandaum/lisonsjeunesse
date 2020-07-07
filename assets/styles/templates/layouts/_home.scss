@@ -37,8 +37,18 @@
         overflow: hidden;
         z-index: map-get($zindex, section);
 
-        @include desktop {
+        @include tablet {
             padding-left: 25vw;
+            .Home__last {
+                width: 25vw;
+            }
+        }
+
+        @include phone-only {
+            padding-left: 10vw;
+            .Home__last {
+                width: 10vw;
+            }
         }
 
         @include touch {
@@ -51,8 +61,14 @@
         height: 60vh;
         z-index: map-get($zindex, section);
 
-        @include touch {
-            width: 100vw;
+        @include phone-only {
+            width: 80vw;
+        }
+
+        @include desktop {
+            &:last-of-type  {
+                margin-right: 25vw;
+            }
         }
     }
 
@@ -108,70 +124,81 @@
 
     &__image {
         z-index: map-get($zindex, section);
+
         @include touch {
             flex-wrap: wrap;
         }
-    }
 
-    picture {
-        padding-top: 0 !important;
-        transition: transform $speed * 2 $bezier, opacity $speed * 2 $bezier;
-        box-shadow: 0 0 5rem rgba(0, 0, 0, 0.2);
-        position: relative;
-        z-index: map-get($zindex, section);
-    }
-
-    img {
-        height: auto;
-        width: auto;
-        max-width: 30vw;
-        max-height: 50vh;
-
-        @include touch {
-            max-width: 70vw;
-            max-height: 40vh;
-        }
-    }
-
-    img:not(.loaded) {
-        width: 25vw;
-        height: 50vh;
-
-        @include touch {
-            width: 60vw;
-        }
-    }
-
-    .Home__post.is-active:hover {
         picture {
-            transform: scale(1.05);
+            padding-top: 0 !important;
+            transition: transform $speed * 2 $bezier, opacity $speed * 2 $bezier;
+            box-shadow: 0 0 5rem rgba(0, 0, 0, 0.2);
+            z-index: map-get($zindex, section);
+            position: absolute;
+
+            @include desktop {
+                clip-path: inset(100% 0 0 0);
+                transition: clip-path $speed * 3 $bezier;
+            }
+        }
+
+        img {
+            height: auto;
+            width: auto;
+            max-width: 30vw;
+            max-height: 50vh;
+            @include desktop {
+                transition: transform $speed * 4 $bezier;
+                transform: scale3d(1.5, 1.5, 1);
+            }
+
+            @include touch {
+                max-width: 70vw;
+                max-height: 40vh;
+            }
+        }
+
+        img:not(.loaded) {
+            width: 25vw;
+            height: 50vh;
+
+            @include touch {
+                width: 60vw;
+            }
+        }
+    }
+
+    .Home__post.is-active &__image picture {
+        clip-path: inset(0 0 0 0);
+        img {
+            transform: scale3d(1, 1, 1);
         }
     }
 }
 
-.Home__slider.is-hover,
-.Home__slider.is-scrolling {
-    .Home__category span {
-        transition-delay: 0s;
-        padding-top: 1.2em;
-    }
-}
+// .Home__slider.is-hover,
+// .Home__slider.is-scrolling {
+//     .Home__category span {
+//         transition-delay: 0s;
+//         padding-top: 1.2em;
+//     }
+// }
 
-.Home__post.is-active:hover .Home__category span {
-    transition-delay: $speed;
-}
+// .Home__post.is-active:hover .Home__category span {
+//     transition-delay: $speed;
+// }
 
-.Home__slider.is-hover:not(.is-scrolling) .Home__post:not(.is-active) picture {
-    opacity: 0;
-}
+// .Home__slider.is-hover:not(.is-scrolling) .Home__post:not(.is-active) picture {
+//     opacity: 0;
+// }
 
-.Home__post.is-active:hover .Home__category--white {
-    &::before {
-        width: 25vw;
-        transition-delay: $speed * 2;
-    }
-    span {
-        padding-top: 0;
-        background: $greige;
-    }
-}
+// .Home__post.is-active:hover .Home__category--white {
+//     &::before {
+//         width: 25vw;
+//         transition-delay: $speed * 2;
+//     }
+//     span {
+//         padding-top: 0;
+//         background: $greige;
+//     }
+// }

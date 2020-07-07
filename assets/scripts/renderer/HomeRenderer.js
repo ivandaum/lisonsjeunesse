@@ -1,6 +1,5 @@
 import Highway from '@dogstudio/highway'
 import Lazyloading from '../vendor/Lazyloading'
-import RafManager from '../utils/RafManager'
 import normalizeWheel from 'normalize-wheel'
 import anime from 'animejs'
 
@@ -24,11 +23,10 @@ class HomeRenderer extends Highway.Renderer {
         this.$images = document.querySelectorAll('.js-image')
 
         this.onResize()
+        this.$items[0].classList.add('is-active')
 
-        if (this.windowWidth > 1000) {
+        if (window.innerWidth > 1000) {
             window.addEventListener('wheel', this.onScroll.bind(this))
-            RafManager.addQueue(this.render.bind(this))
-
             this.$images.forEach((image) => {
                 image.addEventListener('mouseenter', () =>
                     this.$slider.classList.add('is-hover'),
@@ -37,27 +35,13 @@ class HomeRenderer extends Highway.Renderer {
                     this.$slider.classList.remove('is-hover'),
                 )
             })
-
-            this.onScrollCompleted()
         }
     }
+
     onResize() {
-        this.scrollTimeout = null
-        this.windowWidth = window.innerWidth
-        this.windowHeight = window.innerHeight
-
-        this.canScroll = true
+        this.index = this.index || 0
         this.scroll = 0
-        this.scrollEased = 0
-
-        this.itemWidth = this.$items[0].offsetWidth
-        this.itemsPosition = Array.from(this.$items).map(
-            (item, index) => this.itemWidth * index,
-        )
-
-        this.width = this.itemWidth * this.$items.length
-        this.margin = this.windowWidth * 0.5 // total margin left AND right
-        this.max = this.width - this.margin
+        this.canScroll = true
     }
 
     onScroll(e) {
@@ -65,57 +49,45 @@ class HomeRenderer extends Highway.Renderer {
             return false
         }
 
-        const event = normalizeWheel(e)
-        this.scroll += event.pixelY * 0.75
-        this.scroll = Math.min(this.max, Math.max(0, this.scroll))
-
-        this.$slider.classList.add('is-scrolling')
-        this.$items.forEach((item) => item.classList.remove('is-active'))
-
-        clearTimeout(this.scrollTimeout)
-        this.scrollTimeout = setTimeout(() => this.onScrollCompleted(), 400)
-    }
-
-    onScrollCompleted() {
         this.canScroll = false
-        this.$slider.classList.remove('is-scrolling')
 
-        let index = null
-        const w = this.itemWidth * 0.5
+        const event = normalizeWheel(e)
+        const direction = event.pixelY > 0 ? 1 : -1
+        const targets = { x: this.scroll }
 
-        for (let i = 0; i < this.itemsPosition.length; i++) {
-            const itemX = this.itemsPosition[i]
-
-            if (this.scroll >= itemX - w && this.scroll < itemX + w) {
-                index = i
-            }
+        if (
+            direction + this.index >= 0 &&
+            direction + this.index < this.$items.length
+        ) {
+            this.index += direction
         }
 
-        this.$items[index].classList.add('is-active')
+        let x = 0
+        this.$items.forEach((el, i) => {
+            if (i < this.index) {
+                x += el.offsetWidth
+            }
 
-        const x = this.itemsPosition[index]
-        const targets = { x: this.scroll }
+            if (i === this.index) {
+                el.classList.add('is-active')
+            } else {
+                el.classList.remove('is-active')
+            }
+        })
+
         anime({
             targets,
             x,
-            update: () => {
-                this.scroll = targets.x
-            },
-            duration: 1000,
+            duration: 1500,
             easing: 'easeInOutExpo',
+            update: () => {
+                this.$slider.scrollTo(targets.x, 0)
+            },
             complete: () => {
+                this.scroll = x
                 this.canScroll = true
             },
         })
-    }
-
-    render() {
-        this.scrollEased += (this.scroll - this.scrollEased) * 0.2
-
-        this.$items.forEach(
-            (item) =>
-                (item.style.transform = `translateX(${-this.scrollEased}px)`),
-        )
     }
 }
 
