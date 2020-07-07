@@ -36,9 +36,17 @@ get_header(); ?>
     <?php endforeach; ?>
         <div class="Home__last has-height-100 is-relative no-shrink is-flex is-center"></div>
     </div>
-
-    <?php foreach($home->posts as $k => $post): ?>
-        
-    <?php endforeach; ?>
+    
+    <div class="Home__circle has-width-100 has-height-100 is-absolute is-flex is-center">
+        <?php for($i = 0; $i < 3; $i++): ?>
+            <div class="Home__circle--entry is-absolute js-circle" data-indexPos="<?= $i*$i ?>" >
+            <?php foreach($home->posts as $k => $post): ?>
+                <?php if($post->previewImage): ?>
+                <div class="is-absolute has-height-100 has-width-100" data-id="<?= $post->id ?>" style="background: url('<?= Image::getColor($post->previewImage) ?>')"></div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </div>
+        <?php endfor ?>
+    </div>
 </article>
 <?php get_footer(); ?>

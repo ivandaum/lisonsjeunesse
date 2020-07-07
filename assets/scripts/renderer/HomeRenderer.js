@@ -3,12 +3,23 @@ import Lazyloading from '../vendor/Lazyloading'
 import normalizeWheel from 'normalize-wheel'
 import anime from 'animejs'
 
+const CIRCLE_POSITIONS = [
+    [-50, -50],
+    [-10, -50],
+    [50, -50],
+    [50, 0],
+    [50, 40],
+    [-10, 40],
+    [-50, 40],
+]
+
 class HomeRenderer extends Highway.Renderer {
     onLeave() {
         if (this.slider) {
             this.slider.destroy()
         }
     }
+
     onEnter() {}
 
     onEnterCompleted() {
@@ -20,12 +31,14 @@ class HomeRenderer extends Highway.Renderer {
 
         this.$slider = document.querySelector('.js-slider')
         this.$items = document.querySelectorAll('.js-slider-item')
+        this.$circles = document.querySelectorAll('.js-circle')
         this.$images = document.querySelectorAll('.js-image')
 
         this.onResize()
         this.$items[0].classList.add('is-active')
+        this.moveCircle(this.index)
 
-        if (window.innerWidth > 1000) {
+        if (this.windowWidth > 1000) {
             window.addEventListener('wheel', this.onScroll.bind(this))
             this.$images.forEach((image) => {
                 image.addEventListener('mouseenter', () =>
@@ -42,6 +55,32 @@ class HomeRenderer extends Highway.Renderer {
         this.index = this.index || 0
         this.scroll = 0
         this.canScroll = true
+
+        this.windowWidth = window.innerWidth
+    }
+
+    moveCircle(index) {
+        this.$circles.forEach((targets, i) => {
+            const dataPosition = parseInt(targets.dataset.indexpos)
+
+            let posIndex = dataPosition + index
+
+            console.log(targets.dataset.indexpos)
+            if (posIndex > CIRCLE_POSITIONS.length) {
+                posIndex -= CIRCLE_POSITIONS.length
+            }
+
+            const xyz = CIRCLE_POSITIONS[posIndex]
+
+            anime({
+                targets,
+                duration: 1000,
+                easing: 'easeInOutExpo',
+                translateX: xyz[0] + 'vw',
+                translateY: xyz[1] + 'vh',
+                translateZ: 1,
+            })
+        })
     }
 
     onScroll(e) {
@@ -75,6 +114,7 @@ class HomeRenderer extends Highway.Renderer {
             }
         })
 
+        this.moveCircle(this.index)
         anime({
             targets,
             x,
