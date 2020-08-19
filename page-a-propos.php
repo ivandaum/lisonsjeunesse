@@ -37,8 +37,8 @@ get_header();
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-                <div class="About__description is-flex">
-                    <div class="no-first-p is-margin-top-10 is-margin-top-5-touch is-relative wp-content  is-column is-7">
+                <div class="is-flex">
+                    <div class="no-first-p is-margin-top-10 is-margin-top-5-touch is-relative wp-content is-column is-7">
                         <?= $about->content ?>
                     </div>
                 </div>

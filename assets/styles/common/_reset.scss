@@ -432,7 +432,7 @@ body {
     -moz-font-smoothing: grayscale;
     -o-font-smoothing: antialiased;
     font-style: normal;
-    font-weight: normal;
+    font-weight: map-get($fontweight, light);
     overflow-y: scroll;
     overflow-x: hidden;
     color: $black;

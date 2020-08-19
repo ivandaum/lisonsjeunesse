@@ -5,65 +5,56 @@
     padding: 6.5rem 0;
 
     @include desktop {
-        padding: 9rem 2rem 5rem 2rem;
+        padding: 9rem 0 5rem 0;
+    }
+
+    .Navbar__logo::after {
+        content: '';
+        width: 10rem;
+        background: $black;
+        height: 0.1rem;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+    &__social a {
+        border: 0.1rem solid $black;
+        border-radius: 50%;
+        height: 3rem;
+        width: 3rem;
+
+        &:hover {
+            border-color: $grey;
+        }
+    }
+
+    &__social a.facebook svg {
+        width: 0.9rem;
+    }
+
+    svg {
+        margin-right: 0;
     }
 
     li {
         margin-bottom: 2rem;
     }
 
-    a:hover {
+    &__links a:hover {
         text-decoration: underline;
     }
 
-    > .container {
-        @include touch {
-            display: block;
-        }
-    }
-
     &__links {
-        display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        align-content: flex-start;
-        width: 55%;
+
+        @include desktop {
+            max-height: 25rem;
+        }
 
         &--item {
-            width: 50%;
-        }
-
-        @include desktop {
-            max-height: 30rem;
-            border-right: 0.1rem solid $black;
-        }
-
-        @include touch {
-            display: block;
-            width: 100%;
-            border-bottom: 0.1rem solid $black;
-            padding-bottom: 4.8rem;
-            &--item {
-                width: 100%;
-            }
-        }
-    }
-
-    &__contact {
-        padding-top: 4.8rem;
-
-        @include desktop {
-            padding: 0 0 0 5%;
-        }
-
-        h2 {
-            font-size: 4rem;
-            line-height: 1.125em;
-            font-weight: map-get($fontweight, normal);
-            margin-bottom: 2rem;
-        }
-        a {
-            margin-right: 2rem;
+            max-width: 40rem;
         }
     }
 }

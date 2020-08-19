@@ -2,37 +2,46 @@
     use \Lisonsjeunesse\Constants\NetworksConstants;
     use \Lisonsjeunesse\Core\Utils\Menu;
     use \Lisonsjeunesse\Core\Utils\Text;
+    use \Lisonsjeunesse\Core\Utils\Svg;
 
     $menu = Menu::get('footer');
 ?>
     </main>
     <footer class="Footer">
         <div class="container is-flex is-wrap">
-            <ul class="Footer__links">
+            
+
+            <div class="no-shrink is-3 is-column is-12-touch is-margin-bottom-3-touch">
+                <a href="/" class="Navbar__logo is-block is-relative has-font-serif is-padding-bottom-2 is-margin-bottom-2 is-padding-bottom-2-touch is-margin-bottom-2-touch">
+                    Lisons<br>Jeunesse
+                </a>
+                <ul class="Footer__social is-flex">
+                    <li class="is-margin-right-2 is-margin-right-2-touch"><a class="is-flex is-center facebook" href="<?= NetworksConstants::facebook ?>"><?= Svg::print('facebook') ?></a></li>
+                    <li><a class="is-flex is-center" href="<?= NetworksConstants::twitter ?>"><?= Svg::print('twitter') ?></a></li>
+                </ul>
+            </div>
+
+
+            <ul class="Footer__links is-flex is-column is-8 is-12-touch">
             <?php foreach($menu as $item): ?>
-                <li class="Footer__links--item">
+                <li class="Footer__links--item is-main">
                     <a class="has-text-bold" href="<?= $item->url ?>"><?= $item->title ?></a>
                 </li>
 
                 <?php if($item->child): ?>
+                
+                <li class="Footer__links--item">
+                    <ul class="has-width-100 is-flex is-wrap">
                 <?php foreach($item->child as $subitem): ?>
-                    <li>
+                    <li class="is-column is-6 is-12-touch">
                         <a href="<?= $subitem->url ?>"><?= $subitem->title ?></a>
                     </li>
                 <?php endforeach; ?>
+                    </ul>
+                </li>
                 <?php endif; ?>
             <?php endforeach; ?>
             </ul>
-
-            <div class="Footer__contact no-shrink">
-                <div>
-                    <h2 class="has-font-serif">Nos réseaux sociaux</h2>
-                    <ul class="is-flex">
-                        <li><a href="<?= NetworksConstants::facebook ?>">Facebook</a></li>
-                        <li><a href="<?= NetworksConstants::twitter ?>">Twitter</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </footer>
     <script src="<?= get_theme_file_uri('/dist/index.js');  ?>" type="text/javascript"></script>

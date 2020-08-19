@@ -26,6 +26,10 @@
     font-weight: map-get($fontweight, bold);
 }
 
+.has-text-light {
+    font-weight: map-get($fontweight, light);
+}
+
 .is-title {
     font-size: 8rem;
     line-height: 1.2em;
