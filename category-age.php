@@ -12,7 +12,7 @@
             <?= Template::layout('filters', array('categories' => $category->subCategories, 'isActivable' => true)); ?>
         </div>
     </div>
-    <div class="has-background-white ">
+    <div class="has-background-white is-padding-top-7">
         <div class="container">
             <?= Template::layout('posts', array('posts' => $category->posts, 'ajax' => $category->getAjaxParams())); ?>
         </div>

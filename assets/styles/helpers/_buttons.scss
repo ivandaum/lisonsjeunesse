@@ -50,6 +50,7 @@
     overflow: hidden;
     position: relative;
     z-index: map-get($zindex, section);
+    font-weight: inherit;
 
     svg {
         margin-top: 0.65rem;

@@ -43,4 +43,16 @@ class Text {
         $string = preg_replace('/<p/', '<p class="first-of-content"', $string, 1);
         return $string;
     }
+
+    public static function getExcerpt($string = '') {
+        if (is_int($string)) {
+            $string = get_the_excerpt($string);
+        }
+
+        if (strlen($string) > 125) {
+            return substr($string, 0, 125) . '...';
+        } else {
+            return $string . '...';
+        }
+    }
 }

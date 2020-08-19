@@ -18,4 +18,8 @@
     &__header .Filters {
         margin-bottom: 5rem;
     }
+
+    &:not(.is-main-category) .Filters li.is-active {
+        text-decoration: underline;
+    }
 }

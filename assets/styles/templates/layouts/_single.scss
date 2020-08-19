@@ -125,7 +125,7 @@
             @extend .button;
             float: right;
             cursor: pointer;
-
+            font-weight: inherit;
             @include touch {
                 width: 100%;
             }
