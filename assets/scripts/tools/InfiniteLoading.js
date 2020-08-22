@@ -61,6 +61,7 @@ export default class InfiniteLoading {
 
         try {
             const resp = await post({ url, params })
+            console.log(resp)
             const data = JSON.parse(resp.data)
 
             dataset.page += 1

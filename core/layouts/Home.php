@@ -15,7 +15,7 @@ class Home {
         $ids = array();
 
         foreach($this->categories as $k => $category) {
-            $this->posts[] = Post::findByCategory($category->id, 1, 1, 0, $ids)[0];
+            $this->posts[] = Post::findByCategories(array($category->id), 1, 1, 0, $ids)[0];
             $ids[] = $this->posts[$k]->id;
         }
 

@@ -24,9 +24,7 @@
                 <?= $item->title ?>
                 <?php if( $item->slug === TaxonomyConstants::librairy): ?>
                     <span class="Navbar__librairy-pins is-flex js-librairy-pins">
-                        <?php if($librairyCount): ?>
                         <?= $librairyCount ?>
-                        <?php endif; ?>
                     </span>
                 <?php endif; ?>
                 </a>

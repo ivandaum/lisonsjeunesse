@@ -33,7 +33,7 @@
                 <li class="Footer__links--item">
                     <ul class="has-width-100 is-flex is-wrap">
                 <?php foreach($item->child as $subitem): ?>
-                    <li class="is-column is-6 is-12-touch">
+                    <li class="is-column is-6 is-6-touch">
                         <a href="<?= $subitem->url ?>"><?= $subitem->title ?></a>
                     </li>
                 <?php endforeach; ?>

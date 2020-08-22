@@ -45,6 +45,10 @@ function debug($var) {
     die;
 }
 
+function tn_custom_excerpt_length( $length ) {
+    return 17;
+}
+add_filter( 'excerpt_length', 'tn_custom_excerpt_length', 999 );
 
 function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
     $sort_col = array();

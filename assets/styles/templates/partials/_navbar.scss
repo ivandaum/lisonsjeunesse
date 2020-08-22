@@ -57,6 +57,7 @@
         width: 100%;
         border: 0.1rem solid transparent;
         cursor: pointer;
+        line-height: inherit;
 
         @include touch {
             font-weight: bold;
@@ -78,6 +79,7 @@
 
     &__links > li:hover {
         background: $white;
+
         > a {
             border: 0.1rem solid $greige;
             border-bottom: 0.1rem solid transparent;
@@ -107,10 +109,10 @@
             border-left: 0.1rem solid $black;
         }
 
-        li {
-            padding: 1rem 0;
+        li a {
+            padding: 1rem 2rem;
             @include touch {
-                padding: 0;
+                padding: 1rem 0;
             }
         }
 
@@ -128,19 +130,19 @@
         font-size: 0.8em;
         text-align: left;
 
+        &::before {
+            content: '(';
+        }
+        &::after {
+            content: ')';
+        }
+
         @include touch {
             position: relative;
             right: auto;
             top: 0;
             font-size: 1em;
             margin-left: 0.5rem;
-
-            &::before {
-                content: '(';
-            }
-            &::after {
-                content: ')';
-            }
         }
     }
 

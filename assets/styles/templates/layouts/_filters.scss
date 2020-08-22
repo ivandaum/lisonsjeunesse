@@ -10,6 +10,12 @@
         justify-content: flex-start;
     }
 
+    &.sub-filters {
+        @include touch {
+            margin: 0;
+        }
+    }
+
     li {
         text-align: center;
         margin: 0 2rem;
@@ -24,6 +30,10 @@
     a {
         height: 100%;
         width: 100%;
+    }
+
+    &:not(.is-activable) li.is-active {
+        text-decoration: underline;
     }
 }
 

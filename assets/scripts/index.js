@@ -7,6 +7,7 @@ import DefaultRenderer from './renderer/DefaultRenderer'
 import HomeRenderer from './renderer/HomeRenderer'
 import AboutRenderer from './renderer/AboutRenderer'
 import DefaultTransition from './transitions/DefaultTransition'
+import SnapTransition from './transitions/SnapTransition'
 import MyLibrairy from './tools/MyLibrairy'
 import Navbar from './tools/Navbar'
 
@@ -32,6 +33,9 @@ const core = new Highway.Core({
     transitions: {
         home: DefaultTransition,
         default: DefaultTransition,
+        contextual: {
+            snapPage: SnapTransition,
+        },
     },
 })
 

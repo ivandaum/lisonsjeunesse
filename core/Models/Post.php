@@ -47,7 +47,7 @@ class Post {
         return self::format($query->posts);
     }
 
-    public static function findByCategory(int $catId = null, int $count = 0, int $paged = 0, int $offset = 0, $notIn = array()) {
+    public static function findByCategories($cats = array(), int $count = 0, int $paged = 0, int $offset = 0, $notIn = array()) {
         if (!$count) {
             $count = get_option('posts_per_page');
         }
@@ -58,7 +58,6 @@ class Post {
 
         $args = array(
             'posts_per_page' => $count,
-            'cat' => $catId,
             'status' => 'publish',
             'fields' => 'ids',
             'post__not_in' => $notIn,
@@ -70,6 +69,12 @@ class Post {
             $args['offset'] = ($paged * $count) + $offset;
         } else {
             $args['paged'] = $paged;
+        }
+
+        if(count($cats) === 1) {
+            $args['cat'] = $cats[0];
+        } else if (count($cats) > 1) {
+            $args['category__and'] = $cats;
         }
 
         $query = new \WP_Query($args);

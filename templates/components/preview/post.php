@@ -5,6 +5,10 @@
 ?>
 <div class="PostPreview">
     <div class="PostPreview__category is-flex is-center">
+<!-- 
+    <?php foreach($post->categories as $cat): ?>
+        <?= $cat->name; ?>
+    <?php endforeach; ?> -->
         <?php if($post->mainCategory): ?>
         <a class="is-flex is-center" href="<?= $post->mainCategory->url ?>">
             <span class="no-shrink"><?= $post->mainCategory->name ?></span>
@@ -25,6 +29,7 @@
         <span class="no-shrink"><?= $post->date ?> par <a href="<?= $post->author->url ?>"><?= $post->author->name ?></a></span>
         <span class="is-flex is-center no-shrink"><?= Svg::print('clock'); ?><?= $post->readTime ?> min</span>
     </p>
+
     <p class="PostPreview__excerpt"><?= $post->excerpt ?></p>
 
     <?= Template::component('button/add-librairy', array('id' => $post->id, 'active' => $post->isLiked)); ?>

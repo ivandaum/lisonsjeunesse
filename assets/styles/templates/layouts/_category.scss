@@ -15,11 +15,15 @@
         padding: 0 0 5rem 0;
     }
 
-    &__header .Filters {
-        margin-bottom: 5rem;
+    &__posts {
+        z-index: map-get($zindex, section);
     }
 
-    &:not(.is-main-category) .Filters li.is-active {
-        text-decoration: underline;
+    &__header {
+        z-index: map-get($zindex, base);
+    }
+
+    &__header .Filters {
+        margin-bottom: 5rem;
     }
 }

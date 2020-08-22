@@ -49,10 +49,12 @@ class Text {
             $string = get_the_excerpt($string);
         }
 
-        if (strlen($string) > 125) {
-            return substr($string, 0, 125) . '...';
-        } else {
-            return $string . '...';
-        }
+        return $string;
+
+        // if (strlen($string) > 125) {
+        //     return substr($string, 0, 125) . '...';
+        // } else {
+        //     return $string . '...';
+        // }
     }
 }

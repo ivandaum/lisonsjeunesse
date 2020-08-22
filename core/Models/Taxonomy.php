@@ -43,6 +43,7 @@ class Taxonomy {
     }
 
     public static function format(array $categories) {
+
         $arr = array();
         foreach($categories as $category) {
             $temp = new \stdClass();
@@ -52,6 +53,12 @@ class Taxonomy {
             $temp->name = $category->name;
             $temp->slug = $category->slug;
             $temp->isActive = Url::isActive($temp->url);
+
+            if(!$temp->isActive && isset($_GET[TaxonomyConstants::filter])) {
+                $slug = $_GET[TaxonomyConstants::filter];
+                $temp->isActive = $category->slug === $slug;
+            }
+
             $temp->hasParent = (int) $category->parent !== 0;
             $temp->parent = self::findOneById($category->parent);
             $temp->mainCategory = self::getMainCategory($temp);

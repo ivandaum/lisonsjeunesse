@@ -74,5 +74,9 @@
             font-size: 0.6rem;
             transform: translate(45vw, -30vh);
         }
+
+        @include touch {
+            display: none;
+        }
     }
 }

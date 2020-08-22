@@ -11,20 +11,23 @@ class Ajax {
     }
 
     public function onLoadPosts() {
-        $cat = isset($_POST['cat']) ? (int) $_POST['cat'] : null;
+        $cat = isset($_POST['cat']) ? (string) $_POST['cat'] : null;
         $page = isset($_POST['page']) ? (int) $_POST['page'] : null;
         $offset = isset($_POST['offset']) ? (int) $_POST['offset'] : 0;
 
         $posts = array();
         
+        $cat = explode(',', $cat);
+
         if(!$cat) {
             $this->toJson(array('success' => false, 'error' => 'missing_cat_id'));
         }
         
         $page = $page ? $page : 1;
         $count = get_option('posts_per_page');
-        $posts = Post::findByCategory($cat, $count, $page, $offset);
 
+        $posts = Post::findByCategories($cat, $count, $page, $offset);
+        
         $html = Template::layout('posts', array('posts' => $posts, 'noPagination' => true));
 
         if(is_array($posts)) {
@@ -32,14 +35,13 @@ class Ajax {
         } else {
             $loadMore = false;
         }
+
         $this->toJson(array('loadMore' => $loadMore, 'success' => true, 'html' => $html)); 
     }
 
     public function toJson($data) {
-        // header('Content-Type: application/json; charset=utf-8');
-        // header('Content-type: application/json; charset=utf-8');
-        echo json_encode($data, true);
-        die;
+        echo json_encode($data);
+        exit();
     }
 }
 
