@@ -37,7 +37,7 @@ export default class MyLibrairy {
             btn.classList.add(ACTIVE_BTN)
         }
 
-        const numberNavbar = ids.length ? ids.length : ''
+        const numberNavbar = ids.length
         this.$menuItem.innerHTML = numberNavbar
 
         Cookies.set(COOKIE_NAME, ids)
