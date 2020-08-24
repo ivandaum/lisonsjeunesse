@@ -17,26 +17,26 @@ get_header(); ?>
     <div class="Home__slider js-slider is-relative is-flex is-center-y no-shrink ">
     <?php foreach($home->posts as $k => $post): ?>
         <div class="Home__post is-relative no-shrink is-flex is-center js-slider-item">
-            <a href="<?= $post->link ?>" class="Home__image js-image has-height-100 has-width-100 is-flex is-center">
+            <div class="is-column is-3 is-hidden-touch"></div>
+            <div class="is-column is-6 is-relative is-12-touch is-flex is-center">
+                <a href="<?= $post->link ?>" class="Home__image is-relative js-image is-flex is-center has-width-100">
                 <?php if($post->previewImage): ?>
                 <?= Image::create($post->previewImage); ?>
                 <?php endif; ?>
+
                 <?php if($post->mainCategory): ?>
-                <p class="Home__category has-font-serif has-text-center has-width-100 is-margin-top-2-touch is-flex is-wrap is-center">
-                    <?= Text::explodeToSpan($post->mainCategory->name) ?>
+                <p class="Featured__category is-absolute has-font-serif has-text-center">
+                    <?= $post->mainCategory->name ?>
                 </p>
                 <?php endif; ?>
-
+                </a>
+            </div>
+            <div class="is-column is-3 is-hidden-touch">
                 <div class="Home__content is-column is-hidden-touch is-5 is-margin-bottom-4 is-margin-top-2-touch is-absolute">
                     <h2 class="is-secondary-title has-font-serif"><?= $post->title ?></h2>
                     <p class="is-margin-top-1 is-margin-top-2-touch"><?= $post->excerpt ?></p>
                 </div>
-            </a>
-            <?php if($post->mainCategory): ?>
-                <p class="Home__category Home__category--white is-absolute has-font-serif has-text-center has-width-100 is-flex is-wrap is-center">
-                    <?= Text::explodeToSpan($post->mainCategory->name) ?>
-                </p>
-                <?php endif; ?>
+            </div>
         </div>
     <?php endforeach; ?>
         <div class="Home__last has-height-100 is-relative no-shrink is-flex is-center"></div>

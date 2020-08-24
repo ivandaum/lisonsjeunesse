@@ -44,11 +44,13 @@ class HomeRenderer extends Highway.Renderer {
                 img.addEventListener('mouseenter', () => {
                     if (this.$items[i].classList.contains('is-active')) {
                         this.$slider.classList.add('is-hover')
+                        this.$items[i].classList.add('is-hover')
                     }
                 })
-                img.addEventListener('mouseleave', () =>
-                    this.$slider.classList.remove('is-hover'),
-                )
+                img.addEventListener('mouseleave', () => {
+                    this.$slider.classList.remove('is-hover')
+                    this.$items[i].classList.remove('is-hover')
+                })
             })
         }
     }

@@ -17,3 +17,17 @@
         transform: rotate(360deg);
     }
 }
+
+@keyframes sliderIndicator {
+    0% {
+        margin-left: 25%;
+    }
+
+    50% {
+        margin-left: 50%;
+    }
+
+    100% {
+        margin-left: 25%;
+    }
+}

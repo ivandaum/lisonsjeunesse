@@ -1,7 +1,4 @@
 import { isFunction } from '../functions'
-import anime from 'animejs'
-
-const easing = 'easeInOutExpo'
 const duration = 1000
 
 const PageBehavior = {

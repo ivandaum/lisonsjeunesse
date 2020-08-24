@@ -5,6 +5,10 @@
         transform: scale(1.05);
     }
 
+    a:hover {
+        text-decoration: underline;
+    }
+
     &__category {
         margin-bottom: 2rem;
 
