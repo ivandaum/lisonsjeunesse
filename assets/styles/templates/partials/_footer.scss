@@ -62,3 +62,13 @@
 body.home .Footer {
     display: none !important;
 }
+
+.Loader {
+    transition: opacity $speed $bezier;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background: $greige;
+    z-index: map-get($zindex, under-header);
+    pointer-events: none;
+}

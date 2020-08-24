@@ -48,7 +48,6 @@
         </li>
     </ul>
 </nav>
-
 <div class="Navbar__search-overlay js-nav-search is-absolute has-background-white has-width-100 is-padding-top-3 is-padding-bottom-2 is-padding-top-2-touch is-padding-bottom-2-touch">
     <div class="container is-flex is-center">
         <?= Template::component('search', array('noIcon' => true, 'greige' => true)); ?>

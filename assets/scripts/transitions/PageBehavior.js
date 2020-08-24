@@ -5,46 +5,28 @@ const easing = 'easeInOutExpo'
 const duration = 1000
 
 const PageBehavior = {
-    show({ from, done, to }) {
-        window.scrollTo(0, 0)
-
+    show({ to, from, done }) {
+        to.style.opacity = 0
         from.style = 'position: absolute; left: 0; top: 0; width: 100%;'
+        const target = document.querySelector('.js-loader')
+        target.style.opacity = 1
 
-        const timeline = anime.timeline({
-            complete: () => {
-                document.body.classList.remove('loading')
+        setTimeout(() => {
+            window.scrollTo(0, 0)
+            to.style = ''
+            if (from) {
+                from.remove()
+            }
+        }, duration * 0.5)
 
-                if (done && isFunction(done)) {
-                    done()
-                }
+        setTimeout(() => {
+            target.style.opacity = 0
+            document.body.classList.remove('loading')
 
-                if (from) {
-                    from.remove()
-                }
-            },
-        })
-
-        const animations = [
-            {
-                targets: to,
-                duration,
-                easing,
-                opacity: [0, 1],
-                // translateZ: 1,
-                // translateY: [100, 0],
-                delay: duration * 0.5,
-            },
-            {
-                targets: from,
-                duration,
-                easing,
-                opacity: [1, 0],
-                // translateZ: 1,
-                // translateY: [0, -100],
-            },
-        ]
-
-        animations.map((anime) => timeline.add(anime, 0))
+            if (done && isFunction(done)) {
+                done()
+            }
+        }, duration)
     },
 
     hide({ done }) {

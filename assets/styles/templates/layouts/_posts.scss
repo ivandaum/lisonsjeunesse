@@ -1,4 +1,5 @@
 .LastPosts {
+    transition: opacity $speed $bezier;
     @include desktop {
         padding-top: 7rem;
     }
@@ -20,4 +21,8 @@
             }
         }
     }
+}
+
+body.fade-posts .LastPosts {
+    opacity: 0.3;
 }
