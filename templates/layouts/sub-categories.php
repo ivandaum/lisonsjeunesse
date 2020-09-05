@@ -1,8 +1,9 @@
 <?php if ($categories): ?>
     <ul class="Filters is-flex has-width-100 is-center <?php if(isset($isActivable)): ?>is-activable<?php endif; ?>">
+
     <?php foreach($categories as $category): ?>
     <li class="no-shrink <?php if($category->isActive): ?>is-active<?php endif; ?>">
-        <a class="is-flex is-center" data-transition="snapPage" href="<?= $category->url ?>"><?= $category->name ?></a>
+        <a class="is-flex is-center" data-transition="snapPage" href="<?= $category->isActive ? $category->parent->url : $category->url ?>"><?= $category->name ?></a>
     </li>
     <?php endforeach; ?>
 </ul>
