@@ -14,7 +14,7 @@
 ?>
 <nav class="Navbar is-flex is-absolute is-justified js-nav">
     <a href="/" class="Navbar__logo has-font-serif">
-        Lisons<br>Jeunesse
+        Lisons<br>Jeunesse !
     </a>
     <button class="is-hidden-desktop is-fixed js-phone-menu-btn Navbar__phoneBtn">Menu</button>
     <ul class="Navbar__links is-flex no-shrink">

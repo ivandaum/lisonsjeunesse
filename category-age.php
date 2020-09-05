@@ -8,7 +8,7 @@
 <article class="Category is-main-category Category--greige" data-router-view="category">
     <div class="Category__header">
         <div class="container">
-            <h1 class="is-title has-font-serif ">Explorer par <span class="is-lowercase"><?= $category->mainCategory->name ?></span></h1>
+            <h1 class="is-title has-font-serif ">Découvrir par <span class="is-lowercase"><?= $category->mainCategory->name ?></span></h1>
             <?= Template::layout('sub-categories', array('categories' => $category->subCategories, 'isActivable' => true)); ?>
         </div>
     </div>
