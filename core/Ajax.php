@@ -14,6 +14,7 @@ class Ajax {
         $cat = isset($_POST['cat']) ? (string) $_POST['cat'] : null;
         $page = isset($_POST['page']) ? (int) $_POST['page'] : null;
         $offset = isset($_POST['offset']) ? (int) $_POST['offset'] : 0;
+        $author = isset($_POST['author']) ? (string) $_POST['author'] : null;
 
         $posts = array();
         
@@ -26,7 +27,11 @@ class Ajax {
         $page = $page ? $page : 1;
         $count = get_option('posts_per_page');
 
-        $posts = Post::findByCategories($cat, $count, $page, $offset);
+        if ($author) {
+            $posts = Post::findByAuthor($author, $count, $page, $offset);
+        } else {
+            $posts = Post::findByCategories($cat, $count, $page, $offset);
+        }
         
         $html = Template::layout('posts', array('posts' => $posts, 'noPagination' => true));
 

@@ -26,6 +26,11 @@
                     <span class="is-flex is-center no-shrink"><?= Svg::print('clock'); ?><?= $single->readTime ?> min</span>
                 </p>
                 <h1 class="Single__title is-margin-top-2 is-margin-top-2-touch is-margin-bottom-2-touch is-relative has-font-serif"><?= $single->title ?></h1>
+
+                <?php if(is_user_logged_in()): ?>
+                <a class="button is-flex is-center" target="_blank" href="<?= get_edit_post_link($id); ?>">Éditer l'article</a>
+                <?php endif; ?>
+
                 <div class="Single__content is-margin-top-5 is-relative wp-content">
                     <?= $single->content ?>
                 </div>
@@ -38,11 +43,14 @@
                 <div class="Single__comments">
                     <h2 class="Single__comments--title is-secondary-title is-flex is-center-y">Avis de lecteurs</h2>
                     <ul>
+
                         <?php foreach($single->comments as $comment): ?>
-                        <li class="Single__comment" id="comment-<?= $comment->comment_ID ?>">
-                            <p class="is-margin-bottom-2"><strong><?= $comment->comment_author ?></strong></p>
-                            <p><?= $comment->comment_content ?></p>
-                        </li>
+                        <?php if($comment->comment_approved): ?>
+                            <li class="Single__comment" id="comment-<?= $comment->comment_ID ?>">
+                                <p class="is-margin-bottom-2"><strong><?= $comment->comment_author ?></strong></p>
+                                <p><?= $comment->comment_content ?></p>
+                            </li>
+                        <?php endif; ?>
                         <?php endforeach; ?>
                     </ul>
                     <div class="Single__comments--form is-margin-top-3">

@@ -93,9 +93,11 @@
         }
 
         picture {
-            width: 100%;
+            width: auto;
             height: auto;
+            max-height: 60vh;
             position: relative;
+            padding-top: 0 !important;
 
             transition: clip-path $speed * 3 $bezier $speed * 2,
                 transform $speed * 2 $bezier;
@@ -110,7 +112,10 @@
         }
 
         picture img {
-            @include object-fit;
+            max-height: 50vh;
+            width: auto;
+            max-width: 100%;
+            // @include object-fit;
             // @include touch {
             //     object-fit: contain;
             // }

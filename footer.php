@@ -13,11 +13,12 @@
 
             <div class="no-shrink is-3 is-column is-12-touch is-margin-bottom-3-touch">
                 <a href="/" class="Navbar__logo is-block is-relative has-font-serif is-padding-bottom-2 is-margin-bottom-2 is-padding-bottom-2-touch is-margin-bottom-2-touch">
-                    Lisons<br>Jeunesse
+                    Lisons<br>Jeunesse !
                 </a>
                 <ul class="Footer__social is-flex">
-                    <li class="is-margin-right-2 is-margin-right-2-touch"><a class="is-flex is-center facebook" href="<?= NetworksConstants::facebook ?>"><?= Svg::print('facebook') ?></a></li>
-                    <li><a class="is-flex is-center" href="<?= NetworksConstants::twitter ?>"><?= Svg::print('twitter') ?></a></li>
+                    <li class="is-margin-right-2 is-margin-right-2-touch"><a target="_blank" class="is-flex is-center facebook" href="<?= NetworksConstants::facebook ?>"><?= Svg::print('facebook') ?></a></li>
+                    <li class="is-margin-right-2 is-margin-right-2-touch"><a target="_blank" style="padding-top: 0.2em;" class="is-flex is-center" href="<?= NetworksConstants::twitter ?>"><?= Svg::print('twitter') ?></a></li>
+                    <li><a target="_blank" class="is-flex is-center" href="<?= NetworksConstants::instagram ?>"><?= Svg::print('instagram') ?></a></li>
                 </ul>
             </div>
 

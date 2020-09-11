@@ -2,6 +2,7 @@
 namespace Lisonsjeunesse\Constants;
 
 class NetworksConstants {
+  const instagram = 'https://www.instagram.com/lisonsjeunesse/';
   const facebook = 'https://www.facebook.com/lisonsjeunesse/';
   const twitter = 'https://twitter.com/Lisonsjeunesse';
 

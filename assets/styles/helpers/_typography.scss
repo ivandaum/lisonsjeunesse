@@ -94,10 +94,6 @@
         line-height: 1.5em;
         margin-bottom: 5rem;
 
-        em {
-            font-style: normal;
-        }
-
         @include touch {
             font-size: 2rem;
             margin-bottom: 3rem;

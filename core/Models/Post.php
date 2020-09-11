@@ -47,6 +47,37 @@ class Post {
         return self::format($query->posts);
     }
 
+    public static function findByAuthor($id, int $count = 0, int $paged = 0, int $offset = 0, $notIn = array()) {
+        if (!$count) {
+            $count = get_option('posts_per_page');
+        }
+
+        if (!$paged) {
+            $paged = 1;
+        }
+
+        $args = array(
+            'posts_per_page' => $count,
+            'status' => 'publish',
+            'fields' => 'ids',
+            'post__not_in' => $notIn,
+            'orderby' => 'date',
+            'order' => 'DESC',
+        );
+
+        if($offset) {
+            $args['offset'] = ($paged * $count) + $offset;
+        } else {
+            $args['paged'] = $paged;
+        }
+
+        $args['author'] = $id;
+
+        $query = new \WP_Query($args);
+
+        return self::format($query->posts);
+    }
+
     public static function findByCategories($cats = array(), int $count = 0, int $paged = 0, int $offset = 0, $notIn = array()) {
         if (!$count) {
             $count = get_option('posts_per_page');

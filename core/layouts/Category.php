@@ -8,7 +8,7 @@ use \Lisonsjeunesse\Constants\TaxonomyConstants as TaxonomyConstants;
 class Category {
     public function __construct($count = 0, $offset = 0) {
         $category = get_queried_object();
-
+        
         $data = Taxonomy::format( array($category) )[0];
 
         $this->page = get_query_var('paged');
