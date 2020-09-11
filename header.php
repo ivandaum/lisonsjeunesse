@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="<?= get_theme_file_uri('/dist/index.css') ?>" rel="stylesheet">
+    <link href="<?= get_theme_file_uri('/dist/index.css?v=1') ?>" rel="stylesheet">
     <title><?php wp_title( '|', true, 'right' ); ?></title>
     <?php do_action('wp_head'); ?>
     <meta property="og:image" content="<?= wp_get_attachment_url(get_post_thumbnail_id($post->ID)) ?>" />

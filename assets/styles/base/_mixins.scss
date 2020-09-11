@@ -34,3 +34,7 @@
 
     font-size: $responsive;
 }
+
+@function vh($vh: 100) {
+    @return calc(var(--vh) * #{$vh});
+}

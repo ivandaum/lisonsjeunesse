@@ -46,7 +46,7 @@
         </div>
     </footer>
     <div class="Loader is-fixed has-width-100 js-loader has-height-100"></div>
-    <script src="<?= get_theme_file_uri('/dist/index.js');  ?>" type="text/javascript"></script>
+    <script src="<?= get_theme_file_uri('/dist/index.js?v=1');  ?>" type="text/javascript"></script>
 </html>
 </body>
 </html>

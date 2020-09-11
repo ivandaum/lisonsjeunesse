@@ -39,7 +39,7 @@
     &__links {
         @include touch {
             position: fixed;
-            height: 100vh;
+            height: vh(100);
             width: 100vw;
             display: none;
             top: 0;

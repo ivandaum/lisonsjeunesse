@@ -2,6 +2,7 @@ import '../styles/index.scss'
 
 import Highway from '@dogstudio/highway'
 
+import store from './utils/store'
 import DefaultRenderer from './renderer/DefaultRenderer'
 import HomeRenderer from './renderer/HomeRenderer'
 import AboutRenderer from './renderer/AboutRenderer'
@@ -9,6 +10,9 @@ import DefaultTransition from './transitions/DefaultTransition'
 import SnapTransition from './transitions/SnapTransition'
 import MyLibrairy from './tools/MyLibrairy'
 import Navbar from './tools/Navbar'
+
+store.setGlobalVars()
+window.addEventListener('resize', () => store.setGlobalVars())
 
 const Librairy = new MyLibrairy()
 const Nav = new Navbar()

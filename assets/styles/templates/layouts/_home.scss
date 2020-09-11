@@ -1,9 +1,9 @@
 .Home {
-    height: 100vh;
+    height: vh(100);
     background: $greige;
 
     &__slider-indicator {
-        bottom: 10vh;
+        bottom: vh(10);
         max-width: map-get($breakpoints, widescreen);
 
         @include touch {
@@ -60,7 +60,7 @@
 
     &__post {
         width: 50vw;
-        height: 60vh;
+        height: vh(60);
         z-index: map-get($zindex, section);
 
         @include phone-only {
@@ -95,7 +95,7 @@
         picture {
             width: auto;
             height: auto;
-            max-height: 60vh;
+            max-height: vh(60);
             position: relative;
             padding-top: 0 !important;
 
@@ -112,7 +112,7 @@
         }
 
         picture img {
-            max-height: 50vh;
+            max-height: vh(50);
             width: auto;
             max-width: 100%;
             // @include object-fit;
