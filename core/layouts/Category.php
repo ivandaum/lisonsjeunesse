@@ -48,6 +48,13 @@ class Category {
                 $this->filters = Taxonomy::findByParent($filtersParent->id);
             }
         }
+
+        uasort($this->filters, array($this, 'sortCatByNames'));
+        uasort($this->subCategories, array($this, 'sortCatByNames'));
+    }
+
+    public static function sortCatByNames($a, $b) {
+        return strnatcmp(str_replace('-', '', $a->slug), str_replace('-','', $b->slug));
     }
     
     public function getAjaxParams() {

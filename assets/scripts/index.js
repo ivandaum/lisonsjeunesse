@@ -47,9 +47,18 @@ core.on('NAVIGATE_OUT', () => {
     document.body.classList.add('loading')
 })
 
-core.on('NAVIGATE_END', () => {
+core.on('NAVIGATE_END', ({ to, location }) => {
     Librairy.bindButtons()
     detachFromCore()
+
+    if (typeof gtag !== 'undefined') {
+        // eslint-disable-next-line
+        gtag('config', 'UA-59404677-1', {
+            page_path: location.pathname,
+            page_title: to.page.title,
+            page_location: location.href,
+        })
+    }
 })
 
 core.on('NAVIGATE_IN', ({ to }) => {
