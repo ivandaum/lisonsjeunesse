@@ -25,5 +25,12 @@
 
     &__header .Filters {
         margin-bottom: 5rem;
+        z-index: 2;
+        position: relative;
+    }
+
+    &__subcategories {
+        z-index: 2;
+        // background: $greige;
     }
 }

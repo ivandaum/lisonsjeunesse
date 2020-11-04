@@ -13,8 +13,9 @@
     }
 ?>
 <nav class="Navbar is-flex is-absolute is-justified js-nav">
-    <a href="/" class="Navbar__logo has-font-serif">
-        Lisons<br>Jeunesse !
+    <a href="/" class="Navbar__logo">
+        <div class="has-font-serif">Lisons<br>Jeunesse !</div>
+        <div class="is-hidden-touch Navbar__logo--second">Nos idées et nos coups<br /> de cœur de passionnées</div>
     </a>
     <button class="is-hidden-desktop is-fixed js-phone-menu-btn Navbar__phoneBtn">Menu</button>
     <ul class="Navbar__links is-flex no-shrink">

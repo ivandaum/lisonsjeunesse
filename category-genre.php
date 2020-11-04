@@ -26,6 +26,9 @@
             <?php if($featured): ?>
             <?= Template::layout('post/featured', array('post' => $featured, 'isHover' => true)); ?>
             <?php endif; ?>
+        <div class="Category__subcategories is-relative">
+            <?= Template::layout('sub-categories', array('categories' => $category->subCategories, 'isActivable' => true)); ?>
+        </div>
         </div>
     </div>
 
